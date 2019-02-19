@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -119,11 +119,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 865892685}
     m_Modifications:
-    - target: {fileID: 5769888739027306884, guid: bb4a30666871f604792583576c5de465,
-        type: 3}
-      propertyPath: m_Name
-      value: ThrowRange3
-      objectReference: {fileID: 0}
     - target: {fileID: 802252631530790322, guid: bb4a30666871f604792583576c5de465,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -183,6 +178,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769888739027306884, guid: bb4a30666871f604792583576c5de465,
+        type: 3}
+      propertyPath: m_Name
+      value: ThrowRange3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb4a30666871f604792583576c5de465, type: 3}
@@ -319,11 +319,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 993995506}
     m_Modifications:
-    - target: {fileID: 5769888739027306884, guid: bb4a30666871f604792583576c5de465,
-        type: 3}
-      propertyPath: m_Name
-      value: ThrowRange8
-      objectReference: {fileID: 0}
     - target: {fileID: 802252631530790322, guid: bb4a30666871f604792583576c5de465,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -383,6 +378,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769888739027306884, guid: bb4a30666871f604792583576c5de465,
+        type: 3}
+      propertyPath: m_Name
+      value: ThrowRange8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb4a30666871f604792583576c5de465, type: 3}
@@ -487,11 +487,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1453853034}
     m_Modifications:
-    - target: {fileID: 5769888739027306884, guid: bb4a30666871f604792583576c5de465,
-        type: 3}
-      propertyPath: m_Name
-      value: ThrowRange7
-      objectReference: {fileID: 0}
     - target: {fileID: 802252631530790322, guid: bb4a30666871f604792583576c5de465,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -551,6 +546,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769888739027306884, guid: bb4a30666871f604792583576c5de465,
+        type: 3}
+      propertyPath: m_Name
+      value: ThrowRange7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb4a30666871f604792583576c5de465, type: 3}
@@ -836,6 +836,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2173555702728556744}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &516026106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516026097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 996b7d341fd7598458a3f88a5f51b95f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deliveryTargets: []
+  targetHouse: {fileID: 0}
+  deliveryGoal: 0
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,7 +946,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9e5e310b9ee5214b984eedbd8a1cd0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
   player: {fileID: 516026097}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &650050265 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: fd33d63d06808ac49a4174c47f976cff,
@@ -1762,11 +1798,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 120165843}
     m_Modifications:
-    - target: {fileID: 5769888739027306884, guid: bb4a30666871f604792583576c5de465,
-        type: 3}
-      propertyPath: m_Name
-      value: ThrowRange5
-      objectReference: {fileID: 0}
     - target: {fileID: 802252631530790322, guid: bb4a30666871f604792583576c5de465,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1826,6 +1857,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769888739027306884, guid: bb4a30666871f604792583576c5de465,
+        type: 3}
+      propertyPath: m_Name
+      value: ThrowRange5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb4a30666871f604792583576c5de465, type: 3}
@@ -1982,11 +2018,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 189966850}
     m_Modifications:
-    - target: {fileID: 5769888739027306884, guid: bb4a30666871f604792583576c5de465,
-        type: 3}
-      propertyPath: m_Name
-      value: ThrowRange4
-      objectReference: {fileID: 0}
     - target: {fileID: 802252631530790322, guid: bb4a30666871f604792583576c5de465,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2046,6 +2077,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769888739027306884, guid: bb4a30666871f604792583576c5de465,
+        type: 3}
+      propertyPath: m_Name
+      value: ThrowRange4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb4a30666871f604792583576c5de465, type: 3}
@@ -2497,11 +2533,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 650050268}
     m_Modifications:
-    - target: {fileID: 5769888739027306884, guid: bb4a30666871f604792583576c5de465,
-        type: 3}
-      propertyPath: m_Name
-      value: ThrowRange1
-      objectReference: {fileID: 0}
     - target: {fileID: 802252631530790322, guid: bb4a30666871f604792583576c5de465,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2562,6 +2593,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 0.75
       objectReference: {fileID: 0}
+    - target: {fileID: 5769888739027306884, guid: bb4a30666871f604792583576c5de465,
+        type: 3}
+      propertyPath: m_Name
+      value: ThrowRange1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb4a30666871f604792583576c5de465, type: 3}
 --- !u!1001 &1846466373
@@ -2571,11 +2607,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1964545291}
     m_Modifications:
-    - target: {fileID: 5769888739027306884, guid: bb4a30666871f604792583576c5de465,
-        type: 3}
-      propertyPath: m_Name
-      value: ThrowRange6
-      objectReference: {fileID: 0}
     - target: {fileID: 802252631530790322, guid: bb4a30666871f604792583576c5de465,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2635,6 +2666,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769888739027306884, guid: bb4a30666871f604792583576c5de465,
+        type: 3}
+      propertyPath: m_Name
+      value: ThrowRange6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb4a30666871f604792583576c5de465, type: 3}
@@ -3156,11 +3192,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 162734597}
     m_Modifications:
-    - target: {fileID: 5769888739027306884, guid: bb4a30666871f604792583576c5de465,
-        type: 3}
-      propertyPath: m_Name
-      value: ThrowRange2
-      objectReference: {fileID: 0}
     - target: {fileID: 802252631530790322, guid: bb4a30666871f604792583576c5de465,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3220,6 +3251,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769888739027306884, guid: bb4a30666871f604792583576c5de465,
+        type: 3}
+      propertyPath: m_Name
+      value: ThrowRange2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb4a30666871f604792583576c5de465, type: 3}
