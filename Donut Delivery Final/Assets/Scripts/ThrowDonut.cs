@@ -77,8 +77,6 @@ public class ThrowDonut : MonoBehaviour
         donut.transform.position = new Vector3(x, y + 2, z);
         Vector3 direction = target - position;
         donut_rb.AddForce(direction* 100);
-        //Debug.Log(direction);
-        Destroy(donut, 5);
         canFire = false;
         checkCD = cooldown;
     }

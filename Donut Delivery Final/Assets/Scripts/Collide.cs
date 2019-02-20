@@ -17,18 +17,16 @@ public class Collide : MonoBehaviour
 
     void OnCollisionEnter(Collision collisionInfo)
     {
-        //Debug.Log("Collision detected!");
         if (collisionInfo.collider.tag == "DeliveryTarget")
         {
-            //Debug.Log("Delivered!");
             Collider house = collisionInfo.collider;
             house.tag = "Delivered";
             var nav = player.GetComponent<Navigation>();
-            //Debug.Log(nav);
 
             //reset Navigation script
             nav.enabled = false;
             nav.enabled = true;
+            float distance = Vector3.Distance(nav.targetHouse.transform.position, player.transform.position);
             arrow.GetComponent<Renderer>().material.color = Color.white;
 
 
@@ -36,7 +34,11 @@ public class Collide : MonoBehaviour
             if (rend != null)
                 rend.material.color = Color.black;
 
-
+            //on collision: add seconds according to distance to timer and destroy the donut
+            float addedTime = 0.1f * distance;
+            Timer.checkTime += addedTime;
+            Debug.Log(addedTime.ToString() + " seconds added!");
+            Destroy(this.gameObject);
         }
     }
 }

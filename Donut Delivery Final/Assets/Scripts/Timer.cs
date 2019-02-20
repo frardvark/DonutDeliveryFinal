@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     public float TimeLimit = 10f;
-    private float checkTime;
+    public static float checkTime;
     public int houses;
     public int totalHouses;
     public Text timerText;
@@ -43,13 +43,15 @@ public class Timer : MonoBehaviour
             stop = true;
             message.text = "All donuts delivered on time! Congratulations!";
         }
-        
+
+        if (checkTime > 10f)
+            timerText.color = Color.green;
 
         //Text will change to yellow when timer < 50% and to red when timer < 20%
-        if (checkTime <= (TimeLimit * 0.5f) && checkTime > (TimeLimit * 0.20f))
+        if (checkTime <= 10f && checkTime > 5f)
             timerText.color = Color.yellow;
         
-        if (checkTime <= (TimeLimit * 0.20f))
+        if (checkTime <= 5f)
             timerText.color = Color.red;
         
 
