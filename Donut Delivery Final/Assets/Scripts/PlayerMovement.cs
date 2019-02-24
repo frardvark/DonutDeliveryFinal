@@ -40,4 +40,25 @@ public class PlayerMovement : MonoBehaviour
             transform.Rotate(0, horizontalAxis * rb.velocity.magnitude * torque, 0);
         }
     }
+
+    public IEnumerator HitObstacle(int type)
+    {
+        switch (type)
+        {
+            case 0:
+                {
+                    //Oil Spill
+                    Debug.Log("Oil Spill");
+                    break;
+                }
+            case 1:       //Spikes
+                {
+                    float penalty = engineForce / 2;
+                    engineForce -= penalty;
+                    yield return new WaitForSeconds(1);
+                    engineForce += penalty;
+                    break;
+                }
+        }
+    }
 }
