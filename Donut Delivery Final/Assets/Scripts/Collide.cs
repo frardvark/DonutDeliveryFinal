@@ -17,7 +17,7 @@ public class Collide : MonoBehaviour
 
     void OnCollisionEnter(Collision collisionInfo)
     {
-        if (collisionInfo.collider.tag == "DeliveryTarget")
+        if (collisionInfo.collider.tag == "DeliveryTarget" && !Timer.playerLost)
         {
             Collider house = collisionInfo.collider;
             house.tag = "Delivered";
@@ -35,9 +35,8 @@ public class Collide : MonoBehaviour
                 rend.material.color = Color.black;
 
             //on collision: add seconds according to distance to timer and destroy the donut
-            float addedTime = 0.1f * distance;
-            Timer.checkTime += addedTime;
-            Debug.Log(addedTime.ToString() + " seconds added!");
+            float addedTime = 0.12f * distance;
+            Timer.AddTime(addedTime);
             Destroy(this.gameObject);
         }
     }

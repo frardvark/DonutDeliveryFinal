@@ -6,22 +6,22 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    public float TimeLimit = 10f;
-    public static float checkTime;
+    public float initialTime = 10f;
+    private static float timeLeft;
     public int houses;
     public int totalHouses;
     public Text timerText;
     public Text message;
     public Text counter;
-    private bool stop;
-    private bool lost;
+    public static bool timerStopped;
+    public static bool playerLost;
 
     // Start is called before the first frame update
     void Start()
     {
-        lost = false;
-        checkTime = TimeLimit;
-        stop = false;
+        playerLost = false;
+        timeLeft = initialTime;
+        timerStopped = false;
         houses = 0;
         var deliveryTargets = GameObject.FindGameObjectsWithTag("DeliveryTarget");
         totalHouses = deliveryTargets.Length;
@@ -32,33 +32,37 @@ public class Timer : MonoBehaviour
     void Update()
     {
         counter.text = "Donuts Delivered: " + houses;
-        if (!stop)
+        if (!timerStopped)
         {
-            checkTime -= Time.deltaTime;
+            timeLeft -= Time.deltaTime;
         }
             
 
-        if (houses == totalHouses && !lost)
+        if (houses == totalHouses && !playerLost)
         {
-            stop = true;
+            timerStopped = true;
             message.text = "All donuts delivered on time! Congratulations!";
         }
 
-        if (checkTime > 10f)
+        if (timeLeft > 10f && !timerStopped)
             timerText.color = Color.green;
 
-        //Text will change to yellow when timer < 50% and to red when timer < 20%
-        if (checkTime <= 10f && checkTime > 5f)
+        //Text will change to yellow when player has 10 seconds left, red when 5 seconds left
+        if (timeLeft <= 10f && timeLeft > 5f && !timerStopped)
             timerText.color = Color.yellow;
         
-        if (checkTime <= 5f)
+        if (timeLeft <= 5f && !timerStopped)
             timerText.color = Color.red;
         
 
-        if (checkTime <= 0.00f)
+        if (timeLeft <= 0.00f)
         {
-            stop = true;
-            lost = true;
+            timerStopped = true;
+            playerLost = true;
+        }
+
+        if (playerLost)
+        {
             message.text = "Time's Up! Try Again? \n       Press Space";
 
             //press spacebar to restart level
@@ -67,10 +71,16 @@ public class Timer : MonoBehaviour
         }
             
         
-        if (!stop)
-            timerText.text = "Time Left: " + checkTime.ToString("n2") + " seconds";
+        if (!timerStopped)
+            timerText.text = "Time Left: " + timeLeft.ToString("n2");
         else
             timerText.text = "Time Left: 0.00";
         
+    }
+
+    public static void AddTime(float seconds)
+    {
+        timeLeft += seconds;
+        //Debug.Log(seconds.ToString() + " seconds added");
     }
 }
