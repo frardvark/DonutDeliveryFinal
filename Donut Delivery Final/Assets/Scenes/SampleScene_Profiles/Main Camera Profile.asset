@@ -28,25 +28,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a79b01ea5641d4aa6daa2e23605641, type: 3}
   m_Name: Bloom
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
   intensity:
     overrideState: 1
-    value: 4.23
+    value: 8
   threshold:
     overrideState: 1
     value: 1.02
   softKnee:
     overrideState: 1
-    value: 0.474
+    value: 0.245
   clamp:
     overrideState: 0
     value: 65472
   diffusion:
     overrideState: 1
-    value: 9
+    value: 7.01
   anamorphicRatio:
     overrideState: 0
     value: 0
@@ -167,13 +167,13 @@ MonoBehaviour:
     value: 100
   lift:
     overrideState: 1
-    value: {x: 0.96730906, y: 1, z: 0.985526, w: -0.01644737}
+    value: {x: 0.96730906, y: 1, z: 0.985526, w: -0.04934212}
   gamma:
-    overrideState: 0
-    value: {x: 1, y: 1, z: 1, w: 0.0000001252358}
+    overrideState: 1
+    value: {x: 1, y: 1, z: 1, w: -0.016447231}
   gain:
-    overrideState: 0
-    value: {x: 1, y: 1, z: 1, w: 0.000000007182287}
+    overrideState: 1
+    value: {x: 1, y: 1, z: 1, w: -0.0000000016510923}
   masterCurve:
     overrideState: 0
     value:
