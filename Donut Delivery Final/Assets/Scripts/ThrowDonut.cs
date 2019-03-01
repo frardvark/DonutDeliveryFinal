@@ -7,25 +7,42 @@ public class ThrowDonut : MonoBehaviour
     public GameObject player;
     public GameObject house;
     public GameObject arrow;
-    private bool canFire;
+    public bool canFire;
 
     // Start is called before the first frame update
     void Start()
     {
         house = GetComponent<HouseSelection>().targetHouse;
-        arrow = GameObject.Find("Arrow");
-        
-
+        //arrow = GameObject.Find("Arrow");
+        canFire = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         house = GetComponent<HouseSelection>().targetHouse;
+
         //Fire donut with 'E' key
         if (Input.GetKey(KeyCode.E) && canFire)
         {
             FireDonut();
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == house.transform.GetChild(0).name)
+        {
+            canFire = true;
+            //Debug.Log("Can fire!");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.name == house.transform.GetChild(0).name)
+        {
+            canFire = false;
         }
     }
 
@@ -39,13 +56,12 @@ public class ThrowDonut : MonoBehaviour
         float y = position.y;
         float z = position.z;
         GameObject donut = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-       // donut.AddComponent<Collide>();
+        donut.AddComponent<DonutCollision>();
         Rigidbody donut_rb = donut.AddComponent<Rigidbody>();
         donut.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         donut.transform.position = new Vector3(x, y + 2, z);
         Vector3 direction = target - position;
         donut_rb.AddForce(direction * 100);
-        //canFire = false;
-        //checkCD = cooldown;
+        canFire = false;
     }
 }

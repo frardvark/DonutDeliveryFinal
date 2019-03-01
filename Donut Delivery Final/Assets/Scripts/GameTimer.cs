@@ -9,13 +9,14 @@ public class GameTimer : MonoBehaviour
 
     public float initialTime = 10f;
     private static float timeLeft;
-    public int houses;
+    public int housesDelivered;
     public int totalHouses;
     public Text timerText;
     public Text message;
     public Text counter;
     public static bool timerStopped;
     public static bool playerLost;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -23,23 +24,22 @@ public class GameTimer : MonoBehaviour
         playerLost = false;
         timeLeft = initialTime;
         timerStopped = false;
-        houses = 0;
-        var deliveryTargets = GameObject.FindGameObjectsWithTag("DeliveryTarget");
-        totalHouses = deliveryTargets.Length;
-        counter.text = "Donuts Delivered: " + houses;
+        housesDelivered = 0;
+        totalHouses = player.GetComponent<HouseSelection>().deliveryGoal;
+        counter.text = "Donuts Delivered: " + housesDelivered + "/" + totalHouses;
     }
 
     // Update is called once per frame
     void Update()
     {
-        counter.text = "Donuts Delivered: " + houses;
+        counter.text = "Donuts Delivered: " + housesDelivered + "/" + totalHouses;
         if (!timerStopped)
         {
             timeLeft -= Time.deltaTime;
         }
 
 
-        if (houses == totalHouses && !playerLost)
+        if (housesDelivered == totalHouses && !playerLost)
         {
             timerStopped = true;
             message.text = "All donuts delivered on time! Congratulations!";
@@ -74,8 +74,7 @@ public class GameTimer : MonoBehaviour
 
         if (!timerStopped)
             timerText.text = "Time Left: " + timeLeft.ToString("n2");
-        else
-            timerText.text = "Time Left: 0.00";
+       
     }
 
     public static void AddTime(float seconds)
