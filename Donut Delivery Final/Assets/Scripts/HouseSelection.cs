@@ -24,11 +24,11 @@ public class HouseSelection : MonoBehaviour
         //Will be replaced with throwing the donut
         if (Input.GetKey(KeyCode.E))
         {
-            onDelivery();
+            //onDelivery();
         }
     }
 
-    void onDelivery()
+    public void onDelivery()
     {
         deliveryGoal--;
         targetHouse.GetComponent<Renderer>().material.color = Color.red; //Testing (Should remove ring from throwrange)

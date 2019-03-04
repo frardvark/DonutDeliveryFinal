@@ -9,6 +9,7 @@ TagManager:
   - DeliveryTarget
   - Obstacle
   - Bound
+  - UI
   layers:
   - Default
   - TransparentFX
