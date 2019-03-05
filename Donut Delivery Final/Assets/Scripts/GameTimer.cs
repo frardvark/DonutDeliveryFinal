@@ -26,13 +26,13 @@ public class GameTimer : MonoBehaviour
         timerStopped = false;
         housesDelivered = 0;
         totalHouses = player.GetComponent<HouseSelection>().deliveryGoal;
-        counter.text = "Donuts Delivered: " + housesDelivered + "/" + totalHouses;
+        counter.text = "Donuts Delivered: " + housesDelivered.ToString() + "/" + totalHouses.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        counter.text = "Donuts Delivered: " + housesDelivered + "/" + totalHouses;
+        counter.text = "Donuts Delivered: " + housesDelivered.ToString() + "/" + totalHouses.ToString();
         if (!timerStopped)
         {
             timeLeft -= Time.deltaTime;
