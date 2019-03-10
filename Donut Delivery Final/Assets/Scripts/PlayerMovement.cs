@@ -6,42 +6,59 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody rb;
-    Rigidbody childrb;
-    public float speed;
-    public float torque;
-    public float maxSpeed;
-    GameObject childCube;
+    //Control values
+    //How much force is applied to the rigidbody
+    float engineForce;
+    //How much turning torque is applied to the rigidbody
+    float torque;
+    //Max speed that the car can reach
+    float maxSpeed;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        //GameObject childCube = this.gameObject.transform.GetChild(1).gameObject;
-        //childrb = childCube.GetComponent<Rigidbody>();
+        engineForce = 6400f;
+        torque = 0.2f;
+        maxSpeed = 12f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Getting input
         float horizontalAxis = Input.GetAxis("Horizontal");
         float verticalAxis = Input.GetAxis("Vertical");
+
+        //Add forward/backward force to car scaling with input, don't add force if the car is already moving faster than it's max velocity
         if (verticalAxis != 0 && rb.velocity.magnitude <= maxSpeed){
-            //rb.AddForce(transform.forward * verticalAxis * speed);
-            //Debug.Log("Adding force");
-            rb.AddForce(new Vector3(transform.forward.x * verticalAxis * speed, transform.forward.y * verticalAxis * speed, transform.forward.z * verticalAxis * speed));
+            rb.AddForce(new Vector3(transform.forward.x * verticalAxis * engineForce, transform.forward.y * verticalAxis * engineForce, transform.forward.z * verticalAxis * engineForce));
         }
-        //childrb.AddForce(new Vector3(horizontalAxis * torque, 0f, 0f));
+
+        //Add rotational force scaling with horizontal input
         if (horizontalAxis != 0){
+            //Scale rotation with forward velocity to simulate actual car turning
             transform.Rotate(0, horizontalAxis * rb.velocity.magnitude * torque, 0);
         }
-        //Debug.Log(transform.forward.x);
     }
 
-    IEnumerator HitObstacle()
+    public IEnumerator HitObstacle(int type)
     {
-        float penalty = speed / 2;
-        speed -= penalty;
-        yield return new WaitForSeconds(3);
-        speed += penalty;
-        
+        switch (type)
+        {
+            case 0:
+                {
+                    //Oil Spill
+                    Debug.Log("Oil Spill");
+                    break;
+                }
+            case 1:       //Spikes
+                {
+                    float penalty = engineForce / 2;
+                    engineForce -= penalty;
+                    yield return new WaitForSeconds(1);
+                    engineForce += penalty;
+                    break;
+                }
+        }
     }
 }
