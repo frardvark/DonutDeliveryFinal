@@ -21,6 +21,7 @@ public class GameTimer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("truck_withTexture");
         playerLost = false;
         timeLeft = initialTime;
         timerStopped = false;
