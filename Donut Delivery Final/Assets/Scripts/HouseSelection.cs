@@ -7,6 +7,8 @@ public class HouseSelection : MonoBehaviour
 {
     public List<GameObject> deliveryTargets;
     public GameObject targetHouse;
+    public GameObject Ring;
+    public GameObject range;
     public int deliveryGoal;    //Number of houses you have to deliver to beat level  
 
     void Start()
@@ -32,6 +34,7 @@ public class HouseSelection : MonoBehaviour
     {
         deliveryGoal--;
         targetHouse.GetComponent<Renderer>().material.color = Color.red; //Testing (Should remove ring from throwrange)
+        Destroy(range);
 
         if (deliveryGoal > 0)
         {
@@ -45,6 +48,9 @@ public class HouseSelection : MonoBehaviour
     GameObject selectTarget()
     {
         GameObject house = new GameObject();
+        range = Instantiate(Ring) as GameObject; 
+        //range.GetComponent<Renderer>().material.color = Color.yellow;
+
         while (true)
         {
 
@@ -60,12 +66,17 @@ public class HouseSelection : MonoBehaviour
                     if (dist > 40)   //Play With This Value. Possible edge case in a map is the first house selected is the middle one and nothing is far enough away. 
                     {
                         deliveryTargets.RemoveAt(pos);
+                        range.transform.parent = house.transform.GetChild(2).transform;
+                        Debug.Log(house.transform.GetChild(2).name);
                         return house;
                     }
                 }
                 else //First Target
                 {
                     deliveryTargets.RemoveAt(pos);
+                    range.transform.parent = house.transform.GetChild(2).transform;
+                    Debug.Log(house.transform.GetChild(2).name);
+                    Debug.Log(house.transform.GetChild(2).transform.GetChild(0).name);
                     return house;
                 }
 
