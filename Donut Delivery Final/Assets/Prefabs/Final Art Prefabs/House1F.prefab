@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 8286925725512090023}
   - component: {fileID: 4500665161153682936}
   m_Layer: 0
-  m_Name: 'House1F '
-  m_TagString: Untagged
+  m_Name: House1F
+  m_TagString: DeliveryTarget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
