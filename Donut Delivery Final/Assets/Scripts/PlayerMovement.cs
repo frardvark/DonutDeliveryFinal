@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
                     Debug.Log(engineForce);
                     engineForce -= penalty;
                     Debug.Log(engineForce);
-                    yield return new WaitForSeconds(3);
+                    yield return new WaitForSeconds(2.5f);
                     engineForce += penalty;
                     break;
                 }

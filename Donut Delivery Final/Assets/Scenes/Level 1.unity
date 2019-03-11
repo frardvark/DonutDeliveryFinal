@@ -11561,7 +11561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0304efe65963c1747ab452853a699e45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialTime: 120
+  initialTime: 45
   housesDelivered: 0
   timerText: {fileID: 758744896}
   message: {fileID: 1460953156}
@@ -15709,7 +15709,7 @@ MonoBehaviour:
   targetHouse: {fileID: 0}
   Ring: {fileID: 9154412009772255533, guid: 033ff32f95dd4c944909ddf8c7d8e437, type: 3}
   range: {fileID: 0}
-  deliveryGoal: 6
+  deliveryGoal: 3
 --- !u!114 &938813516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15725,6 +15725,7 @@ MonoBehaviour:
   player: {fileID: 0}
   house: {fileID: 0}
   arrow: {fileID: 0}
+  donut: {fileID: 7245471711091038804, guid: 4697eed44b1541e48b42858917fbbbcf, type: 3}
   canFire: 0
 --- !u!1001 &952384469
 PrefabInstance:

@@ -26,7 +26,7 @@ public class GameTimer : MonoBehaviour
         timeLeft = initialTime;
         timerStopped = false;
         housesDelivered = 0;
-        totalHouses = player.GetComponent<HouseSelection>().deliveryGoal/2;
+        totalHouses = player.GetComponent<HouseSelection>().deliveryGoal;
         counter.text = "Donuts Delivered: " + housesDelivered + "/" + totalHouses;
     }
 

@@ -25,12 +25,11 @@ public class HouseSelection : MonoBehaviour
         deliveryGoal--;
         Destroy(range); //Test this. Does it delete the whole variable or just the one ring object?
         GameObject.FindGameObjectWithTag("Arrow").GetComponent<Renderer>().material.color = Color.white;
-        Debug.Log(deliveryGoal);
+        Debug.Log("Delivery Goal " + deliveryGoal);
         if (deliveryGoal > 0)
         {
             targetHouse = selectTarget();   //Get a New Target
         }
-        //Else Signify Level is over
     }
 
     //Make sure they are not too close together
@@ -51,7 +50,7 @@ public class HouseSelection : MonoBehaviour
                 {
                     float dist = Vector3.Distance(targetHouse.transform.position, house.transform.position);
 
-                    if (dist > 40)   //Mess With This Value. Possible edge case in a map is the first house selected is the middle one and nothing is far enough away. 
+                    if (dist > 50)   //Mess With This Value
                     {
                         deliveryTargets.RemoveAt(pos);
                         range = Instantiate(Ring, house.transform.GetChild(2).transform);

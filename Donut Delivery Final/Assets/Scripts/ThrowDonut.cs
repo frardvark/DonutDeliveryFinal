@@ -7,6 +7,7 @@ public class ThrowDonut : MonoBehaviour
     public GameObject player;
     public GameObject house;
     public GameObject arrow;
+    public GameObject donut;
     public bool canFire;
 
     // Start is called before the first frame update
@@ -59,6 +60,7 @@ public class ThrowDonut : MonoBehaviour
         float y = position.y;
         float z = position.z;
         GameObject donut = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        donut = Instantiate(donut);
         donut.AddComponent<DonutCollision>();
         Rigidbody donut_rb = donut.AddComponent<Rigidbody>();
         donut.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
@@ -66,6 +68,5 @@ public class ThrowDonut : MonoBehaviour
         Vector3 direction = target - position;
         donut_rb.AddForce(direction * 100);
         canFire = false;
-        GetComponent<HouseSelection>().onDelivery();
     }
 }
