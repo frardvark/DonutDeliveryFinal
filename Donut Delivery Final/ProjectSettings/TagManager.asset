@@ -9,6 +9,7 @@ TagManager:
   - DeliveryTarget
   - Obstacle
   - Bound
+  - Canvas
   layers:
   - Default
   - TransparentFX

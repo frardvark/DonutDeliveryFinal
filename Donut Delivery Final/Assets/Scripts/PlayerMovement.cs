@@ -13,9 +13,12 @@ public class PlayerMovement : MonoBehaviour
     float torque;
     //Max speed that the car can reach
     float maxSpeed;
-    // Start is called before the first frame update
+    //Slipping Variables
     bool spinning;
     float spin;
+    //Canvas Object
+    GameObject Canvas;
+    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -24,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
         maxSpeed = 12f;
         spinning = false;
         spin = 0f;
+        Canvas = GameObject.FindGameObjectWithTag("Canvas");
     }
 
     // Update is called once per frame
@@ -70,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
                     spinning = false;
                     break;
                 }
+
         }
     }
 }
