@@ -14,12 +14,16 @@ public class PlayerMovement : MonoBehaviour
     //Max speed that the car can reach
     float maxSpeed;
     // Start is called before the first frame update
+    bool spinning;
+    float spin;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         engineForce = 6400f; 
         torque = 0.2f;
         maxSpeed = 12f;
+        spinning = false;
+        spin = 0f;
     }
 
     // Update is called once per frame
@@ -39,24 +43,31 @@ public class PlayerMovement : MonoBehaviour
             //Scale rotation with forward velocity to simulate actual car turning
             transform.Rotate(0, horizontalAxis * rb.velocity.magnitude * torque, 0);
         }
+
+        if (spinning)
+            transform.Rotate(0, spin, 0);
     }
 
     public IEnumerator HitObstacle(int type)
     {
         switch (type)
         {
-            case 0:
-                {
-                    //Oil Spill
-                    Debug.Log("Oil Spill");
-                    break;
-                }
             case 1:       //Spikes
                 {
                     float penalty = engineForce / 2;
                     engineForce -= penalty;
                     yield return new WaitForSeconds(1);
                     engineForce += penalty;
+                    break;
+                }
+            case 2:
+                {
+                    //Oil Spill
+                    Debug.Log("Oil Spill");
+                    spinning = true;
+                    spin = Random.Range(-3.0f, 3.0f);
+                    yield return new WaitForSeconds(1);
+                    spinning = false;
                     break;
                 }
         }

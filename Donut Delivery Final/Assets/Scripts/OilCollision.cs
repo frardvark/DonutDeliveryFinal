@@ -10,7 +10,7 @@ public class OilCollision : MonoBehaviour
         
         if (col.gameObject.tag == "Player")
         {
-            col.gameObject.SendMessage("HitObstacle", 0); //Call Method For Oil Slick Slow Down
+            col.gameObject.SendMessage("HitObstacle", 2); //Call Method For Oil Slick Slow Down
         }
     }
 }
