@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.43880343, g: 0.48697513, b: 0.5672425, a: 1}
+  m_IndirectSpecularColor: {r: 0.43880308, g: 0.48697418, b: 0.56724155, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15960,10 +15960,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21fbfac199615724e8ca3cfddf366703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 938813512}
   house: {fileID: 0}
   arrow: {fileID: 0}
-  donut: {fileID: 0}
+  donutModel: {fileID: 7245471711091038804, guid: 4697eed44b1541e48b42858917fbbbcf,
+    type: 3}
   canFire: 0
 --- !u!1001 &952384469
 PrefabInstance:
