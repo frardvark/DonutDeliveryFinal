@@ -12,6 +12,7 @@ public class DonutCollision : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Debug.Log("DonutCollision script started");
         player = GameObject.FindGameObjectWithTag("Player");
         //arrow = GameObject.Find("Arrow");
         ui = GameObject.Find("Canvas");
@@ -25,9 +26,10 @@ public class DonutCollision : MonoBehaviour
 
     void OnCollisionEnter(Collision collisionInfo)
     {
+        //Debug.Log("Collision detected");
         if (collisionInfo.collider.tag == "DeliveryTarget" && !GameTimer.playerLost)
         {
-            //Debug.Log("Delivered");
+            Debug.Log("Delivered");
             player.GetComponent<ThrowDonut>().canFire = false;
             Collider house = collisionInfo.collider;
             house.tag = "Delivered";
