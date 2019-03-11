@@ -99,7 +99,7 @@ public class ThrowDonut : MonoBehaviour
                 donut.AddComponent<BoxCollider>();
             
             Rigidbody donut_rb = donut.GetComponent<Rigidbody>();
-            donut.transform.localScale = new Vector3(1f, 1f, 1f);
+            donut.transform.localScale = new Vector3(4f, 4f, 4f);
             donut.transform.position = new Vector3(x, y + 2, z);
             Vector3 direction = target - position;
             donut_rb.AddForce(direction * 100);

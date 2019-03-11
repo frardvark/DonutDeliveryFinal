@@ -154,8 +154,8 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 
 --- !u!1 &1499852991798424369
@@ -270,7 +270,6 @@ GameObject:
   - component: {fileID: 1499852991899670757}
   - component: {fileID: 1499852991899670759}
   - component: {fileID: 1499852991899670756}
-  - component: {fileID: 1499852991899670758}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -336,23 +335,6 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Time Left: '
---- !u!114 &1499852991899670758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1499852991899670762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57faa6a039b1bf847a2a577081cf8e74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TimeLimit: 60
-  houses: 0
-  timerText: {fileID: 1499852991899670756}
-  message: {fileID: 1670867827}
-  counter: {fileID: 2128702198}
