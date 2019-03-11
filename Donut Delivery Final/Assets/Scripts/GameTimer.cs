@@ -81,6 +81,5 @@ public class GameTimer : MonoBehaviour
     public static void AddTime(float seconds)
     {
         timeLeft += seconds;
-        //Debug.Log(seconds.ToString() + " seconds added");
     }
 }

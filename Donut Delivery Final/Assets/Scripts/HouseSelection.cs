@@ -17,29 +17,17 @@ public class HouseSelection : MonoBehaviour
         deliveryTargets = new List<GameObject>(GameObject.FindGameObjectsWithTag("DeliveryTarget"));
 
         targetHouse = selectTarget();
-        targetHouse.GetComponent<Renderer>().material.color = Color.green;  //Testing (Should add ring to throwrange)
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //Will be replaced with throwing the donut
-        if (Input.GetKey(KeyCode.E))
-        {
-            //onDelivery();
-        }
-    }
+  
 
     public void onDelivery()
     {
         deliveryGoal--;
-        targetHouse.GetComponent<Renderer>().material.color = Color.red; //Testing (Should remove ring from throwrange)
-        Destroy(range);
+        Destroy(range); //Test this. Does it delete the whole variable or just the one ring object?
 
         if (deliveryGoal > 0)
         {
             targetHouse = selectTarget();   //Get a New Target
-            targetHouse.GetComponent<Renderer>().material.color = Color.green; //Testing (Should add ring to throwrange)
         }
         //Else Signify Level is over
     }
@@ -48,8 +36,7 @@ public class HouseSelection : MonoBehaviour
     GameObject selectTarget()
     {
         GameObject house = new GameObject();
-        range = Instantiate(Ring) as GameObject; 
-        //range.GetComponent<Renderer>().material.color = Color.yellow;
+       
 
         while (true)
         {
@@ -63,20 +50,19 @@ public class HouseSelection : MonoBehaviour
                 {
                     float dist = Vector3.Distance(targetHouse.transform.position, house.transform.position);
 
-                    if (dist > 40)   //Play With This Value. Possible edge case in a map is the first house selected is the middle one and nothing is far enough away. 
+                    if (dist > 40)   //Mess With This Value. Possible edge case in a map is the first house selected is the middle one and nothing is far enough away. 
                     {
                         deliveryTargets.RemoveAt(pos);
-                        range.transform.parent = house.transform.GetChild(2).transform;
-                        Debug.Log(house.transform.GetChild(2).name);
+                        range = Instantiate(Ring, house.transform.GetChild(2).transform);
+                        range.GetComponent<Renderer>().material.color = Color.yellow;   //Could change color based on donut type
                         return house;
                     }
                 }
                 else //First Target
                 {
                     deliveryTargets.RemoveAt(pos);
-                    range.transform.parent = house.transform.GetChild(2).transform;
-                    Debug.Log(house.transform.GetChild(2).name);
-                    Debug.Log(house.transform.GetChild(2).transform.GetChild(0).name);
+                    range = Instantiate(Ring, house.transform.GetChild(2).transform);
+                    range.GetComponent<Renderer>().material.color = Color.yellow;
                     return house;
                 }
 

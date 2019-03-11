@@ -63,5 +63,6 @@ public class ThrowDonut : MonoBehaviour
         Vector3 direction = target - position;
         donut_rb.AddForce(direction * 100);
         canFire = false;
+        GetComponent<HouseSelection>().onDelivery();
     }
 }
