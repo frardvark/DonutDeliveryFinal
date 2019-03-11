@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.43880308, g: 0.48697418, b: 0.56724155, a: 1}
+  m_IndirectSpecularColor: {r: 0.43880343, g: 0.48697513, b: 0.5672425, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11594,7 +11594,7 @@ MonoBehaviour:
   timerText: {fileID: 758744896}
   message: {fileID: 1460953156}
   counter: {fileID: 580742206}
-  level: 0
+  level: 1
 --- !u!222 &693636231
 CanvasRenderer:
   m_ObjectHideFlags: 0
