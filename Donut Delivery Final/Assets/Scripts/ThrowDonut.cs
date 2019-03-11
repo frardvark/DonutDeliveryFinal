@@ -13,6 +13,7 @@ public class ThrowDonut : MonoBehaviour
     void Start()
     {
         house = GetComponent<HouseSelection>().targetHouse;
+        player = GameObject.FindGameObjectWithTag("Player");
         //arrow = GameObject.Find("Arrow");
         canFire = false;
     }
@@ -31,9 +32,10 @@ public class ThrowDonut : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == house.transform.GetChild(0).name)
+        if (other.gameObject.name == house.transform.GetChild(2).name)
         {
             canFire = true;
+            GameObject.FindGameObjectWithTag("Arrow").GetComponent<Renderer>().material.color = Color.green;
             //Debug.Log("Can fire!");
         }
     }
@@ -43,6 +45,7 @@ public class ThrowDonut : MonoBehaviour
         if (other.gameObject.name == house.transform.GetChild(0).name)
         {
             canFire = false;
+            GameObject.FindGameObjectWithTag("Arrow").GetComponent<Renderer>().material.color = Color.white;
         }
     }
 

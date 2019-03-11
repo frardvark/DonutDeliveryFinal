@@ -24,7 +24,8 @@ public class HouseSelection : MonoBehaviour
     {
         deliveryGoal--;
         Destroy(range); //Test this. Does it delete the whole variable or just the one ring object?
-
+        GameObject.FindGameObjectWithTag("Arrow").GetComponent<Renderer>().material.color = Color.white;
+        Debug.Log(deliveryGoal);
         if (deliveryGoal > 0)
         {
             targetHouse = selectTarget();   //Get a New Target

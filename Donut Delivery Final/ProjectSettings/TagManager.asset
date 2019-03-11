@@ -10,6 +10,7 @@ TagManager:
   - Obstacle
   - Bound
   - Canvas
+  - Arrow
   layers:
   - Default
   - TransparentFX

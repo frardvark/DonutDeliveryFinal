@@ -7,16 +7,16 @@ using UnityEngine.UI;
 public class GameTimer : MonoBehaviour
 {
 
-    public float initialTime = 10f;
+    public float initialTime;
     private static float timeLeft;
     public int housesDelivered;
-    public int totalHouses;
+    int totalHouses;
     public Text timerText;
     public Text message;
     public Text counter;
-    public static bool timerStopped;
+    static bool timerStopped;
     public static bool playerLost;
-    public GameObject player;
+    GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -26,14 +26,14 @@ public class GameTimer : MonoBehaviour
         timeLeft = initialTime;
         timerStopped = false;
         housesDelivered = 0;
-        totalHouses = player.GetComponent<HouseSelection>().deliveryGoal;
-        counter.text = "Donuts Delivered: " + housesDelivered.ToString() + "/" + totalHouses.ToString();
+        totalHouses = player.GetComponent<HouseSelection>().deliveryGoal/2;
+        counter.text = "Donuts Delivered: " + housesDelivered + "/" + totalHouses;
     }
 
     // Update is called once per frame
     void Update()
     {
-        counter.text = "Donuts Delivered: " + housesDelivered.ToString() + "/" + totalHouses.ToString();
+        counter.text = "Donuts Delivered: " + housesDelivered + "/" + totalHouses;
         if (!timerStopped)
         {
             timeLeft -= Time.deltaTime;
