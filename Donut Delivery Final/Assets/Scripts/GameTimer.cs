@@ -16,6 +16,7 @@ public class GameTimer : MonoBehaviour
     public Text counter;
     static bool timerStopped;
     public static bool playerLost;
+    public int level;
     GameObject player;
 
     // Start is called before the first frame update
@@ -43,7 +44,18 @@ public class GameTimer : MonoBehaviour
         if (housesDelivered == totalHouses && !playerLost)
         {
             timerStopped = true;
-            message.text = "All donuts delivered on time! Congratulations!";
+            if (level == 1)
+            {
+                message.text = "Level 1 Complete!";
+                Invoke("levelChange", 2f);
+
+            }
+            else if (level == 2)
+            {
+                message.text = "All donuts delivered on time! Congratulations!";
+            }
+
+            
         }
 
         if (timeLeft > 10f && !timerStopped)
@@ -82,4 +94,11 @@ public class GameTimer : MonoBehaviour
     {
         timeLeft += seconds;
     }
+
+    public void levelChange()
+    {
+        //yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("Level 2");
+    }
+
 }
