@@ -63,7 +63,6 @@ public class HouseSelection : MonoBehaviour
 
                 if (GameObject.FindGameObjectWithTag("Canvas").GetComponent<GameTimer>().level == 2)
                 {
-                    Debug.Log("Here");
                     donutType = Random.Range(0, 2);
                     switch (donutType)
                     {
@@ -78,7 +77,12 @@ public class HouseSelection : MonoBehaviour
                                 break;
                             }
                     }
-                        }
+                }
+                else
+                {
+                    donutType = 0;
+                    range.GetComponent<Renderer>().material.color = Color.yellow;
+                }
                     
 
                 }

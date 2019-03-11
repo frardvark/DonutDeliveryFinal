@@ -15738,6 +15738,7 @@ MonoBehaviour:
   targetHouse: {fileID: 0}
   Ring: {fileID: 9154412009772255533, guid: 033ff32f95dd4c944909ddf8c7d8e437, type: 3}
   range: {fileID: 0}
+  donutType: 0
   deliveryGoal: 3
 --- !u!114 &938813516
 MonoBehaviour:
@@ -15754,8 +15755,9 @@ MonoBehaviour:
   player: {fileID: 938813512}
   house: {fileID: 0}
   arrow: {fileID: 0}
-  donutModel: {fileID: 7245471711091038804, guid: 4697eed44b1541e48b42858917fbbbcf,
-    type: 3}
+  glazed: {fileID: 7245471711091038804, guid: 4697eed44b1541e48b42858917fbbbcf, type: 3}
+  choc: {fileID: 0}
+  donutType: 0
   canFire: 0
 --- !u!1001 &952384469
 PrefabInstance:
@@ -28599,6 +28601,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 938813511}
     m_Modifications:
+    - target: {fileID: 100000, guid: 79ecb70c2f021d44c8572195ecc17e65, type: 3}
+      propertyPath: m_Name
+      value: ArrowModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 79ecb70c2f021d44c8572195ecc17e65, type: 3}
+      propertyPath: m_TagString
+      value: Arrow
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 79ecb70c2f021d44c8572195ecc17e65, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -28654,14 +28664,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 79ecb70c2f021d44c8572195ecc17e65, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 79ecb70c2f021d44c8572195ecc17e65, type: 3}
-      propertyPath: m_Name
-      value: ArrowModel
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 79ecb70c2f021d44c8572195ecc17e65, type: 3}
-      propertyPath: m_TagString
-      value: Arrow
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 79ecb70c2f021d44c8572195ecc17e65, type: 3}
       propertyPath: m_CastShadows
