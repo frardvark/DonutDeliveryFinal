@@ -58,9 +58,12 @@ public class PlayerMovement : MonoBehaviour
         {
             case 1:       //Spikes
                 {
-                    float penalty = engineForce / 2;
+                    Debug.Log("Spikes");
+                    float penalty = engineForce * 3 / 4;
+                    Debug.Log(engineForce);
                     engineForce -= penalty;
-                    yield return new WaitForSeconds(1);
+                    Debug.Log(engineForce);
+                    yield return new WaitForSeconds(3);
                     engineForce += penalty;
                     break;
                 }
