@@ -19331,7 +19331,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1219120764}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -196.8, y: 3.7, z: -102.3}
+  m_LocalPosition: {x: -181, y: 3.7, z: -102.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -25174,7 +25174,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!64 &1639658339
 MeshCollider:
@@ -28599,14 +28599,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 938813511}
     m_Modifications:
-    - target: {fileID: 100000, guid: 79ecb70c2f021d44c8572195ecc17e65, type: 3}
-      propertyPath: m_Name
-      value: ArrowModel
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 79ecb70c2f021d44c8572195ecc17e65, type: 3}
-      propertyPath: m_TagString
-      value: Arrow
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 79ecb70c2f021d44c8572195ecc17e65, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -28662,6 +28654,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 79ecb70c2f021d44c8572195ecc17e65, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 79ecb70c2f021d44c8572195ecc17e65, type: 3}
+      propertyPath: m_Name
+      value: ArrowModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 79ecb70c2f021d44c8572195ecc17e65, type: 3}
+      propertyPath: m_TagString
+      value: Arrow
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 79ecb70c2f021d44c8572195ecc17e65, type: 3}
       propertyPath: m_CastShadows
