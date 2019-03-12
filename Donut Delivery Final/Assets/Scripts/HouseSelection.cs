@@ -1,0 +1,92 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+
+public class HouseSelection : MonoBehaviour
+{
+    public List<GameObject> deliveryTargets;
+    public GameObject targetHouse;
+    public GameObject Ring;
+    public GameObject range;
+    public int donutType;
+    public int deliveryGoal;    //Number of houses you have to deliver to beat level  
+
+    void Start()
+    {
+        //Initialize Possible Delivery Targets
+        deliveryTargets = new List<GameObject>(GameObject.FindGameObjectsWithTag("DeliveryTarget"));
+
+        targetHouse = selectTarget();
+    }
+  
+
+    public void onDelivery()
+    {
+        deliveryGoal--;
+        Destroy(range); //Test this. Does it delete the whole variable or just the one ring object?
+        GameObject.FindGameObjectWithTag("Arrow").GetComponent<Renderer>().material.color = Color.white;
+        Debug.Log("Delivery Goal " + deliveryGoal);
+        if (deliveryGoal > 0)
+        {
+            targetHouse = selectTarget();   //Get a New Target
+        }
+    }
+
+    //Make sure they are not too close together
+    GameObject selectTarget()
+    {
+        GameObject house = new GameObject();
+       
+
+        while (true)
+        {
+
+            if (deliveryTargets != null && deliveryTargets.Count > 0)
+            {
+                int pos = Random.Range(0, deliveryTargets.Count - 1);
+                house = deliveryTargets.ElementAt(pos);
+
+                if (targetHouse != null)
+                {
+                    float dist = Vector3.Distance(targetHouse.transform.position, house.transform.position);
+
+                    if (dist < 50)   //House is too close together. Pick another
+                    {
+                        continue;
+                    }
+                }
+               
+                    deliveryTargets.RemoveAt(pos);
+                    range = Instantiate(Ring, house.transform.GetChild(2).transform);
+                    
+
+                if (GameObject.FindGameObjectWithTag("Canvas").GetComponent<GameTimer>().level == 2)
+                {
+                    donutType = Random.Range(0, 2);
+                    switch (donutType)
+                    {
+                        case 0:   //Glazed Donut 
+                            {
+                                range.GetComponent<Renderer>().material.color = Color.yellow;
+                                break;
+                            }
+                        case 1:   //Chocolate Donut
+                            {
+                                range.GetComponent<Renderer>().material.color = new Color32(102,54,5,0);
+                                break;
+                            }
+                    }
+                }
+                else
+                {
+                    donutType = 0;
+                    range.GetComponent<Renderer>().material.color = Color.yellow;
+                }
+                    
+
+                }
+                return house;
+        }
+    }
+}
