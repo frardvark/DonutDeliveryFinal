@@ -2,24 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpikeCollision : MonoBehaviour
+public class CarCollision : MonoBehaviour
 {
     private AudioSource source;
     public AudioClip soundEffect;
 
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
         GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
         source = camera.GetComponent<AudioSource>();
-        soundEffect = (AudioClip)Resources.Load("SoundFX/spike");
+        soundEffect = (AudioClip)Resources.Load("SoundFX/carHorn");
     }
 
-    void OnTriggerEnter(Collider col)
+    // Update is called once per frame
+    void Update()
     {
+        
+    }
 
-        if (col.gameObject.tag == "Player")
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "PedestrianCar")
         {
-            col.gameObject.SendMessage("HitObstacle", 1); //Call Method For Spike Slow Down
             source.PlayOneShot(soundEffect);
         }
     }
