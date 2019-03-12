@@ -6,6 +6,7 @@ public class CarCollision : MonoBehaviour
 {
     private AudioSource source;
     public AudioClip soundEffect;
+    private float coolDown = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -18,14 +19,18 @@ public class CarCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (coolDown > 0f)
+            coolDown -= Time.deltaTime;
+        else
+            coolDown = 0f;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "PedestrianCar")
+        if (collision.collider.tag == "PedestrianCar" && coolDown <= 0f)
         {
             source.PlayOneShot(soundEffect);
+            coolDown += 2f;
         }
     }
 }
