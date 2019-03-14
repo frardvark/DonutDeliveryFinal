@@ -40,3 +40,5 @@ sysinfo.txt
 *.unitypackage
 Donut Delivery/Packages/manifest.json
 Donut Delivery/ProjectSettings/ProjectVersion.txt
+Donut Delivery Final/ProjectSettings/ProjectVersion.txt
+Donut Delivery Final/Packages/manifest.json

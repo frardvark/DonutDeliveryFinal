@@ -9,6 +9,8 @@ TagManager:
   - DeliveryTarget
   - Obstacle
   - Bound
+  - Canvas
+  - Arrow
   layers:
   - Default
   - TransparentFX
