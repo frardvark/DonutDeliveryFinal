@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.43880343, g: 0.48697513, b: 0.5672425, a: 1}
+  m_IndirectSpecularColor: {r: 0.43880308, g: 0.48697418, b: 0.56724155, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3750,6 +3750,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PedestrianCarF (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785304448786599505, guid: ed238a770a22fa14dac110b6eff2c7b9,
+        type: 3}
+      propertyPath: m_TagString
+      value: PedestrianCar
       objectReference: {fileID: 0}
     - target: {fileID: 6431593345216938566, guid: ed238a770a22fa14dac110b6eff2c7b9,
         type: 3}
@@ -9055,6 +9060,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PedestrianCarF (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785304448786599505, guid: ed238a770a22fa14dac110b6eff2c7b9,
+        type: 3}
+      propertyPath: m_TagString
+      value: PedestrianCar
       objectReference: {fileID: 0}
     - target: {fileID: 6431593345216938566, guid: ed238a770a22fa14dac110b6eff2c7b9,
         type: 3}
@@ -15977,6 +15987,7 @@ MonoBehaviour:
   targetHouse: {fileID: 0}
   Ring: {fileID: 9154412009772255533, guid: 033ff32f95dd4c944909ddf8c7d8e437, type: 3}
   range: {fileID: 0}
+  donutType: 0
   deliveryGoal: 5
 --- !u!114 &938813516
 MonoBehaviour:
@@ -15993,9 +16004,23 @@ MonoBehaviour:
   player: {fileID: 938813512}
   house: {fileID: 0}
   arrow: {fileID: 0}
-  donutModel: {fileID: 7245471711091038804, guid: 4697eed44b1541e48b42858917fbbbcf,
-    type: 3}
+  glazed: {fileID: 7245471711091038804, guid: 4697eed44b1541e48b42858917fbbbcf, type: 3}
+  choc: {fileID: 7670036273848050968, guid: 94e64c93281575a408a66ddc162ee4a2, type: 3}
+  donutType: 0
   canFire: 0
+--- !u!114 &938813517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938813512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0285e3c0b090be24aad5569334554c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffect: {fileID: 0}
 --- !u!1001 &952384469
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17216,6 +17241,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PedestrianCarF (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5785304448786599505, guid: ed238a770a22fa14dac110b6eff2c7b9,
+        type: 3}
+      propertyPath: m_TagString
+      value: PedestrianCar
+      objectReference: {fileID: 0}
     - target: {fileID: 6431593345216938566, guid: ed238a770a22fa14dac110b6eff2c7b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18429,6 +18459,10 @@ PrefabInstance:
     - target: {fileID: 883460198, guid: 6f91ddf18d692af449a23697113c0503, type: 3}
       propertyPath: m_Name
       value: PedestrianCarF (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 883460198, guid: 6f91ddf18d692af449a23697113c0503, type: 3}
+      propertyPath: m_TagString
+      value: PedestrianCar
       objectReference: {fileID: 0}
     - target: {fileID: 6431593345216938566, guid: 6f91ddf18d692af449a23697113c0503,
         type: 3}
@@ -25117,6 +25151,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PedestrianCarF (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 883460198, guid: 6f91ddf18d692af449a23697113c0503, type: 3}
+      propertyPath: m_TagString
+      value: PedestrianCar
+      objectReference: {fileID: 0}
     - target: {fileID: 6431593345216938566, guid: 6f91ddf18d692af449a23697113c0503,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -25172,10 +25210,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 883460202, guid: 6f91ddf18d692af449a23697113c0503, type: 3}
-      propertyPath: avoidancePriority
-      value: 45
-      objectReference: {fileID: 0}
     - target: {fileID: 4923951695769363936, guid: 6f91ddf18d692af449a23697113c0503,
         type: 3}
       propertyPath: waypoint1
@@ -25191,6 +25225,10 @@ PrefabInstance:
       propertyPath: waypoint3
       value: 
       objectReference: {fileID: 1119941038}
+    - target: {fileID: 883460202, guid: 6f91ddf18d692af449a23697113c0503, type: 3}
+      propertyPath: avoidancePriority
+      value: 45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f91ddf18d692af449a23697113c0503, type: 3}
 --- !u!1001 &1614301886
@@ -29017,6 +29055,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 938813511}
     m_Modifications:
+    - target: {fileID: 100000, guid: 79ecb70c2f021d44c8572195ecc17e65, type: 3}
+      propertyPath: m_Name
+      value: ArrowModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 79ecb70c2f021d44c8572195ecc17e65, type: 3}
+      propertyPath: m_TagString
+      value: Arrow
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 79ecb70c2f021d44c8572195ecc17e65, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -29072,14 +29118,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 79ecb70c2f021d44c8572195ecc17e65, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 79ecb70c2f021d44c8572195ecc17e65, type: 3}
-      propertyPath: m_Name
-      value: ArrowModel
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 79ecb70c2f021d44c8572195ecc17e65, type: 3}
-      propertyPath: m_TagString
-      value: Arrow
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 79ecb70c2f021d44c8572195ecc17e65, type: 3}
       propertyPath: m_CastShadows
@@ -33885,6 +33923,10 @@ PrefabInstance:
     - target: {fileID: 883460198, guid: 6f91ddf18d692af449a23697113c0503, type: 3}
       propertyPath: m_Name
       value: PedestrianCarF
+      objectReference: {fileID: 0}
+    - target: {fileID: 883460198, guid: 6f91ddf18d692af449a23697113c0503, type: 3}
+      propertyPath: m_TagString
+      value: PedestrianCar
       objectReference: {fileID: 0}
     - target: {fileID: 6431593345216938566, guid: 6f91ddf18d692af449a23697113c0503,
         type: 3}

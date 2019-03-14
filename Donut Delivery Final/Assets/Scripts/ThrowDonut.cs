@@ -7,7 +7,9 @@ public class ThrowDonut : MonoBehaviour
     public GameObject player;
     public GameObject house;
     public GameObject arrow;
-    public GameObject donutModel;
+    public GameObject glazed;
+    public GameObject choc;
+    public int donutType;
     public bool canFire;
 
     // Start is called before the first frame update
@@ -23,9 +25,15 @@ public class ThrowDonut : MonoBehaviour
     void Update()
     {
         house = GetComponent<HouseSelection>().targetHouse;
+        donutType = GameObject.FindGameObjectWithTag("Player").GetComponent<HouseSelection>().donutType;
 
         //Fire donut with 'E' key
-        if (Input.GetKey(KeyCode.E) && canFire)
+        if (Input.GetKey(KeyCode.E) && canFire && donutType == 0)
+        {
+            FireDonut();
+        }
+        
+        if(Input.GetKey(KeyCode.R) && canFire && donutType == 1)
         {
             FireDonut();
         }
@@ -54,12 +62,27 @@ public class ThrowDonut : MonoBehaviour
     //create new object just above truck and throws it at the house
     void FireDonut()
     {
+        GameObject donut;
         Vector3 position = player.transform.position;
         Vector3 target = house.transform.position;
         float x = position.x;
         float y = position.y;
         float z = position.z;
-        GameObject donut = Instantiate(donutModel);
+
+        //Instantiate the correct donut type
+        if (donutType == 0)
+        {
+            donut = Instantiate(glazed);
+        }
+        else if(donutType == 1)
+        {
+            donut = Instantiate(choc);
+        }
+        else
+        {
+            donut = Instantiate(glazed);
+        }
+
         if (donut != null)
         {
             //Debug.Log("Donut not null");

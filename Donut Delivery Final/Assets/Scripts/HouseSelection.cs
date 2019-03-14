@@ -9,6 +9,7 @@ public class HouseSelection : MonoBehaviour
     public GameObject targetHouse;
     public GameObject Ring;
     public GameObject range;
+    public int donutType;
     public int deliveryGoal;    //Number of houses you have to deliver to beat level  
 
     void Start()
@@ -50,23 +51,42 @@ public class HouseSelection : MonoBehaviour
                 {
                     float dist = Vector3.Distance(targetHouse.transform.position, house.transform.position);
 
-                    if (dist > 50)   //Mess With This Value
+                    if (dist < 50)   //House is too close together. Pick another
                     {
-                        deliveryTargets.RemoveAt(pos);
-                        range = Instantiate(Ring, house.transform.GetChild(2).transform);
-                        range.GetComponent<Renderer>().material.color = Color.yellow;   //Could change color based on donut type
-                        return house;
+                        continue;
                     }
                 }
-                else //First Target
-                {
+               
                     deliveryTargets.RemoveAt(pos);
                     range = Instantiate(Ring, house.transform.GetChild(2).transform);
-                    range.GetComponent<Renderer>().material.color = Color.yellow;
-                    return house;
-                }
+                    
 
-            }
+                if (GameObject.FindGameObjectWithTag("Canvas").GetComponent<GameTimer>().level == 2)
+                {
+                    donutType = Random.Range(0, 2);
+                    switch (donutType)
+                    {
+                        case 0:   //Glazed Donut 
+                            {
+                                range.GetComponent<Renderer>().material.color = Color.yellow;
+                                break;
+                            }
+                        case 1:   //Chocolate Donut
+                            {
+                                range.GetComponent<Renderer>().material.color = new Color32(102,54,5,0);
+                                break;
+                            }
+                    }
+                }
+                else
+                {
+                    donutType = 0;
+                    range.GetComponent<Renderer>().material.color = Color.yellow;
+                }
+                    
+
+                }
+                return house;
         }
     }
 }
