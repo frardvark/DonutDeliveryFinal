@@ -1662,7 +1662,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: bd577cefa9cc85d4db91aff1341d2f21, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -126.5
+      value: -125.7
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: bd577cefa9cc85d4db91aff1341d2f21, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7653,7 +7653,11 @@ MonoBehaviour:
   deliveryTargets: []
   targetHouse: {fileID: 0}
   Ring: {fileID: 9154412009772255533, guid: 033ff32f95dd4c944909ddf8c7d8e437, type: 3}
+  throwRange: {fileID: 3656425375112261863, guid: cc70a9ab022cde04cb590f2ef077903a,
+    type: 3}
   range: {fileID: 0}
+  rangeRing: {fileID: 9154412009772255533, guid: 033ff32f95dd4c944909ddf8c7d8e437,
+    type: 3}
   donutType: 0
   deliveryGoal: 3
 --- !u!114 &938813516
