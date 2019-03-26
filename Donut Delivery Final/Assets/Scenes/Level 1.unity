@@ -21874,7 +21874,7 @@ MonoBehaviour:
   rangeRing: {fileID: 9154412009772255533, guid: 033ff32f95dd4c944909ddf8c7d8e437,
     type: 3}
   donutType: 0
-  deliveryGoal: 3
+  deliveryGoal: 4
 --- !u!114 &938813516
 MonoBehaviour:
   m_ObjectHideFlags: 0
