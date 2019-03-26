@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.43880302, g: 0.48697466, b: 0.56724155, a: 1}
+  m_IndirectSpecularColor: {r: 0.43880343, g: 0.48697513, b: 0.5672425, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -25647,7 +25647,12 @@ MonoBehaviour:
   deliveryTargets: []
   targetHouse: {fileID: 0}
   Ring: {fileID: 9154412009772255533, guid: 033ff32f95dd4c944909ddf8c7d8e437, type: 3}
+  throwRangeBig: {fileID: 3656425375112261863, guid: 9ecab179982444c40b4d97589217ae1c,
+    type: 3}
+  throwRangeSmall: {fileID: 6547675932074178866, guid: 0f89d37d8d48c884994686b1bd530317,
+    type: 3}
   range: {fileID: 0}
+  rangeRing: {fileID: 0}
   donutType: 0
   deliveryGoal: 5
 --- !u!114 &938813516
@@ -25664,6 +25669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 938813512}
   house: {fileID: 0}
+  throwRange: {fileID: 0}
   arrow: {fileID: 0}
   glazed: {fileID: 7245471711091038804, guid: 4697eed44b1541e48b42858917fbbbcf, type: 3}
   choc: {fileID: 7670036273848050968, guid: 94e64c93281575a408a66ddc162ee4a2, type: 3}
