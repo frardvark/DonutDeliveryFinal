@@ -81,7 +81,7 @@ public class HouseSelection : MonoBehaviour
                                 break;
                             }
                         case 1:   //Chocolate Donut
-                            {
+                            {                    
                                 rangeRing.GetComponent<Renderer>().material.color = new Color32(102,54,5,0);
                                 break;
                             }
