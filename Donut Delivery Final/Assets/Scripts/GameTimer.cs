@@ -7,32 +7,34 @@ using UnityEngine.UI;
 public class GameTimer : MonoBehaviour
 {
 
-    public float initialTime = 10f;
+    public float initialTime;
     private static float timeLeft;
     public int housesDelivered;
-    public int totalHouses;
+    int totalHouses;
     public Text timerText;
     public Text message;
     public Text counter;
-    public static bool timerStopped;
+    static bool timerStopped;
     public static bool playerLost;
-    public GameObject player;
+    public int level;
+    GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("truck_withTexture");
         playerLost = false;
         timeLeft = initialTime;
         timerStopped = false;
         housesDelivered = 0;
         totalHouses = player.GetComponent<HouseSelection>().deliveryGoal;
-        counter.text = "Donuts Delivered: " + housesDelivered.ToString() + "/" + totalHouses.ToString();
+        counter.text = "Donuts Delivered: " + housesDelivered + "/" + totalHouses;
     }
 
     // Update is called once per frame
     void Update()
     {
-        counter.text = "Donuts Delivered: " + housesDelivered.ToString() + "/" + totalHouses.ToString();
+        counter.text = "Donuts Delivered: " + housesDelivered + "/" + totalHouses;
         if (!timerStopped)
         {
             timeLeft -= Time.deltaTime;
@@ -42,7 +44,18 @@ public class GameTimer : MonoBehaviour
         if (housesDelivered == totalHouses && !playerLost)
         {
             timerStopped = true;
-            message.text = "All donuts delivered on time! Congratulations!";
+            if (level == 1)
+            {
+                message.text = "Level 1 Complete!";
+                Invoke("levelChange", 2f);
+
+            }
+            else if (level == 2)
+            {
+                message.text = "All donuts delivered on time! Congratulations!";
+            }
+
+            
         }
 
         if (timeLeft > 10f && !timerStopped)
@@ -80,6 +93,12 @@ public class GameTimer : MonoBehaviour
     public static void AddTime(float seconds)
     {
         timeLeft += seconds;
-        //Debug.Log(seconds.ToString() + " seconds added");
     }
+
+    public void levelChange()
+    {
+        //yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("Level 2");
+    }
+
 }

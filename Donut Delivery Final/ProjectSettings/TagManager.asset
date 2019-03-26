@@ -9,7 +9,9 @@ TagManager:
   - DeliveryTarget
   - Obstacle
   - Bound
-  - UI
+  - Canvas
+  - Arrow
+  - PedestrianCar
   layers:
   - Default
   - TransparentFX

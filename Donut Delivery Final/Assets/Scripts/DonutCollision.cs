@@ -8,13 +8,19 @@ public class DonutCollision : MonoBehaviour
     public HouseSelection houseSelection;
     private GameObject player;
     public GameObject ui;
+    public AudioClip soundEffect;
+    private AudioSource source;
 
     // Start is called before the first frame update
     void Start()
     {
+        //Debug.Log("DonutCollision script started");
         player = GameObject.FindGameObjectWithTag("Player");
         //arrow = GameObject.Find("Arrow");
         ui = GameObject.Find("Canvas");
+        GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
+        source = camera.GetComponent<AudioSource>();
+        soundEffect = (AudioClip) Resources.Load("SoundFX/Just_Impacts_Extension-I_163");
     }
 
     // Update is called once per frame
@@ -25,9 +31,16 @@ public class DonutCollision : MonoBehaviour
 
     void OnCollisionEnter(Collision collisionInfo)
     {
+        //Debug.Log("Collision detected");
         if (collisionInfo.collider.tag == "DeliveryTarget" && !GameTimer.playerLost)
         {
-            //Debug.Log("Delivered");
+            if (source != null && soundEffect != null)
+            {
+                source.PlayOneShot(soundEffect);
+                //Debug.Log("Sound played");
+            }
+            
+            Debug.Log("Delivered");
             player.GetComponent<ThrowDonut>().canFire = false;
             Collider house = collisionInfo.collider;
             house.tag = "Delivered";

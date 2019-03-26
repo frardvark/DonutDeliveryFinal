@@ -12,7 +12,7 @@ public class Arrow : MonoBehaviour
     void Start()
     {
 
-        truck = GameObject.Find("Truck");
+        truck = GameObject.Find("truck_withTexture");
         GetComponent<Renderer>().material.color = Color.white;
 
     }
@@ -20,7 +20,7 @@ public class Arrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        target = GameObject.Find("Truck").GetComponent<HouseSelection>().targetHouse;
+        target = GameObject.Find("truck_withTexture").GetComponent<HouseSelection>().targetHouse;
         transform.LookAt(target.transform);
     }
 }
