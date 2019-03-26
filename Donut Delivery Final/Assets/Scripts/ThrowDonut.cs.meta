@@ -3,12 +3,7 @@ guid: 21fbfac199615724e8ca3cfddf366703
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - player: {fileID: 938813512, guid: 8eb7b08230c3f6749b69f31102c995ff, type: 3}
-  - house: {instanceID: 0}
-  - arrow: {instanceID: 0}
-  - donutModel: {fileID: 7245471711091038804, guid: 4697eed44b1541e48b42858917fbbbcf,
-      type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -6,6 +6,7 @@ public class ThrowDonut : MonoBehaviour
 {
     public GameObject player;
     public GameObject house;
+    public GameObject throwRange;
     public GameObject arrow;
     public GameObject glazed;
     public GameObject choc;
@@ -25,6 +26,7 @@ public class ThrowDonut : MonoBehaviour
     void Update()
     {
         house = GetComponent<HouseSelection>().targetHouse;
+        throwRange = GetComponent<HouseSelection>().range;
         donutType = GameObject.FindGameObjectWithTag("Player").GetComponent<HouseSelection>().donutType;
 
         //Fire donut with 'E' key
@@ -41,7 +43,7 @@ public class ThrowDonut : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == house.transform.GetChild(2).name)
+        if (other.gameObject.name == throwRange.gameObject.name)
         {
             canFire = true;
             GameObject.FindGameObjectWithTag("Arrow").GetComponent<Renderer>().material.color = Color.green;
@@ -51,7 +53,7 @@ public class ThrowDonut : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.name == house.transform.GetChild(0).name)
+        if (other.gameObject.name == throwRange.gameObject.name)
         {
             canFire = false;
             GameObject.FindGameObjectWithTag("Arrow").GetComponent<Renderer>().material.color = Color.white;
