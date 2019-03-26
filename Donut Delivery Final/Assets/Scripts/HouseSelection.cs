@@ -8,7 +8,8 @@ public class HouseSelection : MonoBehaviour
     public List<GameObject> deliveryTargets;
     public GameObject targetHouse;
     public GameObject Ring;
-    public GameObject throwRange;
+    public GameObject throwRangeBig;
+    public GameObject throwRangeSmall;
     public GameObject range;
     public GameObject rangeRing;
     public int donutType;
@@ -60,9 +61,13 @@ public class HouseSelection : MonoBehaviour
                     }
                 }
                
-                    deliveryTargets.RemoveAt(pos);
-                    range = Instantiate(throwRange, house.transform);
-                    rangeRing = Instantiate(Ring, range.transform);
+                deliveryTargets.RemoveAt(pos);
+                if (house.name.Contains("3F"))
+                    range = Instantiate(throwRangeBig, house.transform);
+                else
+                    range = Instantiate(throwRangeSmall, house.transform);
+
+                rangeRing = Instantiate(Ring, range.transform);
                     
 
                 if (GameObject.FindGameObjectWithTag("Canvas").GetComponent<GameTimer>().level == 2)
