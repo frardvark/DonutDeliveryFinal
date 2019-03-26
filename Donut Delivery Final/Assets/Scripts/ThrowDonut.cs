@@ -53,7 +53,7 @@ public class ThrowDonut : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.name == house.transform.GetChild(0).name)
+        if (other.gameObject.name == throwRange.gameObject.name)
         {
             canFire = false;
             GameObject.FindGameObjectWithTag("Arrow").GetComponent<Renderer>().material.color = Color.white;
