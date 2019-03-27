@@ -18,6 +18,7 @@ public class GameTimer : MonoBehaviour
     public static bool playerLost;
     public int level;
     GameObject player;
+    Rigidbody player_rb;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,8 @@ public class GameTimer : MonoBehaviour
         housesDelivered = 0;
         totalHouses = player.GetComponent<HouseSelection>().deliveryGoal;
         counter.text = "Donuts Delivered: " + housesDelivered + "/" + totalHouses;
+        player_rb = player.GetComponent<Rigidbody>();
+        Debug.Log("This is level: " + level);
     }
 
     // Update is called once per frame
@@ -40,10 +43,11 @@ public class GameTimer : MonoBehaviour
             timeLeft -= Time.deltaTime;
         }
 
-
+        //win condition
         if (housesDelivered == totalHouses && !playerLost)
         {
             timerStopped = true;
+            saveLevelProgress();
             if (level == 1)
             {
                 message.text = "Level 1 Complete!";
@@ -87,7 +91,7 @@ public class GameTimer : MonoBehaviour
 
         if (!timerStopped)
             timerText.text = "Time Left: " + timeLeft.ToString("n2");
-       
+
     }
 
     public static void AddTime(float seconds)
@@ -101,4 +105,17 @@ public class GameTimer : MonoBehaviour
         SceneManager.LoadScene("Level 2");
     }
 
+    public void saveLevelProgress()
+    {
+        int levelsCleared = PlayerPrefs.GetInt("LevelsCleared", 0);
+
+        if (levelsCleared != level && level > levelsCleared)
+        {
+            levelsCleared = level;
+            PlayerPrefs.SetInt("LevelsCleared", levelsCleared);
+            Debug.Log("Saved level progress, LevelsCleared = " + levelsCleared);
+        }
+    }
+
+    
 }
