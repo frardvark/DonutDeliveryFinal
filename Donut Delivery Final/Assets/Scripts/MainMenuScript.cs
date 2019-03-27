@@ -12,7 +12,7 @@ public class MainMenuScript : MonoBehaviour
     public GameObject levelSelect;
     public GameObject options;
     public GameObject erase;
-    public int levelsCleared;
+    private int levelsCleared;
     public Dropdown dropdown;
 
     // Start is called before the first frame update
@@ -65,7 +65,13 @@ public class MainMenuScript : MonoBehaviour
 
     public void onPlay()
     {
-        SceneManager.LoadScene("Level 1");
+        Debug.Log("Play button clicked");
+        levelsCleared = PlayerPrefs.GetInt("LevelsCleared", 0);
+        int toLoad = levelsCleared + 1;
+        if (toLoad > 2)
+            toLoad = 2;
+        Debug.Log("Loading level " + toLoad);
+        SceneManager.LoadScene(toLoad);
     }
 
     public void onBack()
@@ -83,6 +89,7 @@ public class MainMenuScript : MonoBehaviour
         Debug.Log("Loading " + level);
         SceneManager.LoadScene(level);
     }
+
 
     public void onOptions()
     {

@@ -87,6 +87,7 @@ public class ThrowDonut : MonoBehaviour
 
         if (donut != null)
         {
+            donut.tag = "Donut";
             //Debug.Log("Donut not null");
         }
         

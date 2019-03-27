@@ -12,6 +12,7 @@ TagManager:
   - Canvas
   - Arrow
   - PedestrianCar
+  - Donut
   layers:
   - Default
   - TransparentFX
