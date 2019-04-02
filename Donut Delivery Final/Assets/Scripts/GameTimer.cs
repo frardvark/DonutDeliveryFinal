@@ -51,10 +51,15 @@ public class GameTimer : MonoBehaviour
             if (level == 1)
             {
                 message.text = "Level 1 Complete!";
-                Invoke("levelChange", 2f);
+                Invoke("levelChange2", 2f);
 
             }
             else if (level == 2)
+            {
+                message.text = "Level 2 Complete!";
+                Invoke("levelChange3", 2f);
+            }
+            else if(level == 3)
             {
                 message.text = "All donuts delivered on time! Congratulations!";
             }
@@ -99,10 +104,14 @@ public class GameTimer : MonoBehaviour
         timeLeft += seconds;
     }
 
-    public void levelChange()
+    public void levelChange2()
     {
-        //yield return new WaitForSeconds(5);
         SceneManager.LoadScene("Level 2");
+    }
+
+    public void levelChange3()
+    {
+        SceneManager.LoadScene("Level 3");
     }
 
     public void saveLevelProgress()

@@ -68,9 +68,9 @@ public class HouseSelection : MonoBehaviour
                     range = Instantiate(throwRangeSmall, house.transform);
 
                 rangeRing = Instantiate(Ring, range.transform);
-                    
 
-                if (GameObject.FindGameObjectWithTag("Canvas").GetComponent<GameTimer>().level == 2)
+                int level = GameObject.FindGameObjectWithTag("Canvas").GetComponent<GameTimer>().level;
+                if ( level == 2 || level == 3)
                 {
                     donutType = Random.Range(0, 2);
                     switch (donutType)
