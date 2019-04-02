@@ -70,31 +70,36 @@ public class HouseSelection : MonoBehaviour
                 rangeRing = Instantiate(Ring, range.transform);
 
                 int level = GameObject.FindGameObjectWithTag("Canvas").GetComponent<GameTimer>().level;
+                
                 if ( level == 2 || level == 3)
                 {
-                    donutType = Random.Range(0, 2);
-                    switch (donutType)
-                    {
-                        case 0:   //Glazed Donut 
-                            {
-                                rangeRing.GetComponent<Renderer>().material.color = Color.yellow;
-                                break;
-                            }
-                        case 1:   //Chocolate Donut
-                            {                    
-                                rangeRing.GetComponent<Renderer>().material.color = new Color32(102,54,5,0);
-                                break;
-                            }
-                    }
+                    donutType = Random.Range(0, level);
+                    
                 }
                 else
                 {
                     donutType = 0;
-                    rangeRing.GetComponent<Renderer>().material.color = Color.yellow;
                 }
-                    
+                switch (donutType)
+                {
+                    case 0:   //Glazed Donut 
+                        {
+                            rangeRing.GetComponent<Renderer>().material.color = Color.yellow;
+                            break;
+                        }
+                    case 1:   //Chocolate Donut
+                        {
+                            rangeRing.GetComponent<Renderer>().material.color = new Color32(102, 54, 5, 0);
+                            break;
+                        }
+                    case 2:
+                        {
+                            rangeRing.GetComponent<Renderer>().material.color = new Color32(232, 0, 254, 1);
+                            break;
+                        }
+                }
 
-                }
+            }
                 return house;
         }
     }

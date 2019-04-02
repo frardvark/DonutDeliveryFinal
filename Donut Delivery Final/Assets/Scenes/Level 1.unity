@@ -7455,6 +7455,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ceeb43132482a34da8e35f47daa4b20, type: 3}
+--- !u!4 &308420321 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3370244597955813056, guid: 4ceeb43132482a34da8e35f47daa4b20,
+    type: 3}
+  m_PrefabInstance: {fileID: 308420320}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &309547961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22735,7 +22741,9 @@ MonoBehaviour:
   throwRange: {fileID: 0}
   arrow: {fileID: 0}
   glazed: {fileID: 7245471711091038804, guid: 4697eed44b1541e48b42858917fbbbcf, type: 3}
-  choc: {fileID: 0}
+  choc: {fileID: 7670036273848050968, guid: 94e64c93281575a408a66ddc162ee4a2, type: 3}
+  sprinkle: {fileID: 2392282016908078490, guid: 672bc530bc8654847aceab895269e37c,
+    type: 3}
   donutType: 0
   canFire: 0
 --- !u!114 &938813518
@@ -30669,9 +30677,10 @@ Transform:
   - {fileID: 1280510756}
   - {fileID: 1329727011}
   - {fileID: 1843410902}
-  - {fileID: 581015883}
+  - {fileID: 308420321}
   - {fileID: 559969879}
   - {fileID: 1371744314}
+  - {fileID: 581015883}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
