@@ -67,7 +67,7 @@ public class HouseSelection : MonoBehaviour
                 else
                     range = Instantiate(throwRangeSmall, house.transform);
 
-                rangeRing = Instantiate(Ring, range.transform);
+                rangeRing = range.transform.GetChild(0).gameObject;
 
                 int level = GameObject.FindGameObjectWithTag("Canvas").GetComponent<GameTimer>().level;
                 
@@ -94,7 +94,7 @@ public class HouseSelection : MonoBehaviour
                         }
                     case 2:
                         {
-                            rangeRing.GetComponent<Renderer>().material.color = new Color32(232, 0, 254, 1);
+                            rangeRing.GetComponent<Renderer>().material.color = new Color32(255, 51, 153, 1);
                             break;
                         }
                 }
