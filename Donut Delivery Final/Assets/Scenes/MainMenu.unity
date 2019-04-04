@@ -33672,7 +33672,7 @@ PrefabInstance:
     - target: {fileID: 6077714937377539100, guid: e8ee03956666d224bb631741b9258c2c,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6077714936751989828, guid: e8ee03956666d224bb631741b9258c2c,
         type: 3}
@@ -33688,7 +33688,7 @@ PrefabInstance:
     - target: {fileID: 6077714937482836733, guid: e8ee03956666d224bb631741b9258c2c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6077714937296110773, guid: e8ee03956666d224bb631741b9258c2c,
         type: 3}
@@ -33703,6 +33703,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6077714936348402449, guid: e8ee03956666d224bb631741b9258c2c,
         type: 3}
+      propertyPath: m_Options.m_Options.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6077714936348402449, guid: e8ee03956666d224bb631741b9258c2c,
+        type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6077714937672888780, guid: e8ee03956666d224bb631741b9258c2c,
@@ -33711,6 +33716,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: updateResolution
+      objectReference: {fileID: 0}
+    - target: {fileID: 6077714936348402449, guid: e8ee03956666d224bb631741b9258c2c,
+        type: 3}
+      propertyPath: m_Options.m_Options.Array.data[2].m_Text
+      value: 1280 x 720
+      objectReference: {fileID: 0}
+    - target: {fileID: 6077714936348402449, guid: e8ee03956666d224bb631741b9258c2c,
+        type: 3}
+      propertyPath: m_Options.m_Options.Array.data[3].m_Text
+      value: 1024 x 768
+      objectReference: {fileID: 0}
+    - target: {fileID: 6077714936348402449, guid: e8ee03956666d224bb631741b9258c2c,
+        type: 3}
+      propertyPath: m_Options.m_Options.Array.data[4].m_Text
+      value: 1024 x 768
+      objectReference: {fileID: 0}
+    - target: {fileID: 6077714936348402449, guid: e8ee03956666d224bb631741b9258c2c,
+        type: 3}
+      propertyPath: m_Value
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8ee03956666d224bb631741b9258c2c, type: 3}

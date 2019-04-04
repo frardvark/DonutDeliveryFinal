@@ -854,8 +854,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5371129368542829473, guid: e8ee03956666d224bb631741b9258c2c,
-          type: 3}
+      - m_Target: {fileID: 6077714937672888780}
         m_MethodName: updateResolution
         m_Mode: 1
         m_Arguments:
@@ -1647,6 +1646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 377471ff752a8374e9d9e992a1f33665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropdown: {fileID: 0}
   total_levels: 3
 --- !u!1 &6077714936751989830
 GameObject:

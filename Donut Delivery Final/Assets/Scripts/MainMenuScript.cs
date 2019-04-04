@@ -15,9 +15,8 @@ public class MainMenuScript : MonoBehaviour
     private int levelsCleared;
     public Dropdown dropdown;
     public int total_levels = 3;
-
-    // Start is called before the first frame update
-    void Start()
+    
+    void Awake()
     {
         currentState = MenuState.Main;
         main = transform.Find("Main").gameObject;
@@ -29,7 +28,9 @@ public class MainMenuScript : MonoBehaviour
         SetupLevelSelect();
         Debug.Log(options.transform.Find("Dropdown1").GetComponent<Dropdown>());
         dropdown = options.transform.Find("Dropdown1").GetComponent<Dropdown>();
-
+        dropdown.onValueChanged.AddListener(delegate {
+            updateResolution(dropdown);
+        });
     }
 
     // Update is called once per frame
@@ -72,8 +73,8 @@ public class MainMenuScript : MonoBehaviour
         Debug.Log("Play button clicked");
         levelsCleared = PlayerPrefs.GetInt("LevelsCleared", 0);
         int toLoad = levelsCleared + 1;
-        if (toLoad > 2)
-            toLoad = 2;
+        if (toLoad > total_levels)
+            toLoad = total_levels;
         Debug.Log("Loading level " + toLoad);
         SceneManager.LoadScene(toLoad);
     }
@@ -129,12 +130,12 @@ public class MainMenuScript : MonoBehaviour
         SetupLevelSelect();
     }
 
-    //WIP not currently functional
-    public void updateResolution()
+    public void updateResolution(Dropdown res_dropdown)
     {
         Debug.Log("Change resolution called");
-        Debug.Log(this.dropdown);
-        switch (this.dropdown.value)
+        //Dropdown dropdown = transform.Find("Options").transform.Find("Dropdown1").gameObject.GetComponent<Dropdown>();
+        Debug.Log("Option #" + res_dropdown.value + " called");
+        switch (res_dropdown.value)
         {
             case 0:
                 Screen.SetResolution(1920, 1080, Screen.fullScreen);
@@ -143,7 +144,10 @@ public class MainMenuScript : MonoBehaviour
                 Screen.SetResolution(1600, 900, Screen.fullScreen);
                 break;
             case 2:
-                Screen.SetResolution(900, 600, Screen.fullScreen);
+                Screen.SetResolution(1280, 720, Screen.fullScreen);
+                break;
+            case 3:
+                Screen.SetResolution(1024, 768, Screen.fullScreen);
                 break;
 
         }
