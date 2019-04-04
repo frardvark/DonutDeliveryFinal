@@ -13,8 +13,8 @@ public class FireHydrant : MonoBehaviour
     private void Start()
     {
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
-        GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
-        source = camera.GetComponent<AudioSource>();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        source = player.GetComponent<AudioSource>();
         soundEffect = (AudioClip)Resources.Load("SoundFX/WaterSplash_Medium");
     }
     void OnTriggerEnter(Collider col)

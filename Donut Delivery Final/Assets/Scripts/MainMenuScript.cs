@@ -13,7 +13,7 @@ public class MainMenuScript : MonoBehaviour
     private GameObject options;
     private GameObject erase;
     private int levelsCleared;
-    private Dropdown dropdown;
+    public Dropdown dropdown;
     public int total_levels = 3;
 
     // Start is called before the first frame update
@@ -27,11 +27,8 @@ public class MainMenuScript : MonoBehaviour
         levelsCleared = PlayerPrefs.GetInt("LevelsCleared", 0);
         Debug.Log("Loaded Save Data: Levels cleared = " + levelsCleared);
         SetupLevelSelect();
-        if (erase != null)
-        {
-            Debug.Log(erase);
-        }
-        dropdown = transform.Find("Dropdown1").gameObject.GetComponent<Dropdown>();
+        Debug.Log(options.transform.Find("Dropdown1").GetComponent<Dropdown>());
+        dropdown = options.transform.Find("Dropdown1").GetComponent<Dropdown>();
 
     }
 
@@ -136,8 +133,8 @@ public class MainMenuScript : MonoBehaviour
     public void updateResolution()
     {
         Debug.Log("Change resolution called");
-        Debug.Log(dropdown);
-        switch (dropdown.value)
+        Debug.Log(this.dropdown);
+        switch (this.dropdown.value)
         {
             case 0:
                 Screen.SetResolution(1920, 1080, Screen.fullScreen);

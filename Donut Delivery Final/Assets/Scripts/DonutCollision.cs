@@ -18,8 +18,7 @@ public class DonutCollision : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         //arrow = GameObject.Find("Arrow");
         ui = GameObject.Find("Canvas");
-        GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
-        source = camera.GetComponent<AudioSource>();
+        source = player.GetComponent<AudioSource>();
         soundEffect = (AudioClip) Resources.Load("SoundFX/Just_Impacts_Extension-I_163");
     }
 
