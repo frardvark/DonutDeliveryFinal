@@ -6,14 +6,15 @@ using UnityEngine;
 
 public class MainMenuScript : MonoBehaviour
 {
-    public enum MenuState { Main, LevelSelect, Options, Erase};
-    public MenuState currentState;
-    public GameObject main;
-    public GameObject levelSelect;
-    public GameObject options;
-    public GameObject erase;
+    private enum MenuState { Main, LevelSelect, Options, Erase};
+    private MenuState currentState;
+    private GameObject main;
+    private GameObject levelSelect;
+    private GameObject options;
+    private GameObject erase;
     private int levelsCleared;
-    public Dropdown dropdown;
+    private Dropdown dropdown;
+    public int total_levels = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,13 @@ public class MainMenuScript : MonoBehaviour
         erase = transform.Find("ConfirmErase").gameObject;
         levelsCleared = PlayerPrefs.GetInt("LevelsCleared", 0);
         Debug.Log("Loaded Save Data: Levels cleared = " + levelsCleared);
+        SetupLevelSelect();
+        if (erase != null)
+        {
+            Debug.Log(erase);
+        }
+        dropdown = transform.Find("Dropdown1").gameObject.GetComponent<Dropdown>();
+
     }
 
     // Update is called once per frame
@@ -37,7 +45,6 @@ public class MainMenuScript : MonoBehaviour
                 levelSelect.SetActive(false);
                 options.SetActive(false);
                 erase.SetActive(false);
-
                 break;
 
             case MenuState.LevelSelect:
@@ -122,12 +129,14 @@ public class MainMenuScript : MonoBehaviour
         Debug.Log("Player data erased!");
         levelsCleared = 0;
         currentState = MenuState.Options;
+        SetupLevelSelect();
     }
 
-    //WIP
+    //WIP not currently functional
     public void updateResolution()
     {
         Debug.Log("Change resolution called");
+        Debug.Log(dropdown);
         switch (dropdown.value)
         {
             case 0:
@@ -142,5 +151,29 @@ public class MainMenuScript : MonoBehaviour
 
         }
 
+    }
+
+    public void SetupLevelSelect()
+    {
+        //make array for level buttons
+        Debug.Log("Total levels: " + total_levels);
+        levelSelect = transform.Find("LevelSelect").gameObject;
+        Transform[] level_buttons = new Transform[total_levels];
+        Transform level1_button = levelSelect.transform.Find("level1_button");
+        Transform level2_button = levelSelect.transform.Find("level2_button");
+        Transform level3_button = levelSelect.transform.Find("level3_button");
+        level_buttons[0] = level1_button;
+        level_buttons[1] = level2_button;
+        level_buttons[2] = level3_button;
+
+        //disable level buttons if not cleared
+        for (int i = 0; i < total_levels; i++)
+        {
+            if (levelsCleared < i)
+            {
+                level_buttons[i].GetComponent<Button>().interactable = false;
+                //Debug.Log("level button disabled");
+            }
+        }
     }
 }
