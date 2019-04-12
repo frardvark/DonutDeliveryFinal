@@ -27,9 +27,9 @@ public class MainMenuScript : MonoBehaviour
         options = transform.Find("Options").gameObject;
         erase = transform.Find("ConfirmErase").gameObject;
         selectSave = transform.Find("SaveFileSelect").gameObject;
-        Debug.Log(selectSave);
-        levelsCleared = PlayerPrefs.GetInt("LevelsCleared", 0);
-        Debug.Log("Loaded Save Data: Levels cleared = " + levelsCleared);
+        //Debug.Log(selectSave);
+        
+        //Debug.Log("Loaded Save Data: Levels cleared = " + levelsCleared);
         SetupLevelSelect();
         Debug.Log(options.transform.Find("Dropdown1").GetComponent<Dropdown>());
         dropdown = options.transform.Find("Dropdown1").GetComponent<Dropdown>();
@@ -201,5 +201,30 @@ public class MainMenuScript : MonoBehaviour
         selectedSaveFile = saveFile;
         Debug.Log("Selected save file number " + saveFile);
         currentState = MenuState.Main;
+
+        //load save file
+        PlayerPrefs.SetInt("SaveFile", saveFile);
+        switch (saveFile)
+        {
+            case 1:
+                levelsCleared = PlayerPrefs.GetInt("LevelsCleared1", 0);
+                break;
+
+            case 2:
+                levelsCleared = PlayerPrefs.GetInt("LevelsCleared2", 0);
+                break;
+
+            case 3:
+                levelsCleared = PlayerPrefs.GetInt("LevelsCleared3", 0);
+                break;
+
+            case 4:
+                levelsCleared = PlayerPrefs.GetInt("LevelsCleared4", 0);
+                break;
+        }
+        Debug.Log("Loaded save data: levels cleared = " + levelsCleared);
+
+
+
     }
 }
