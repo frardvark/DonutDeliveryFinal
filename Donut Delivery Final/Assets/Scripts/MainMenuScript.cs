@@ -6,23 +6,28 @@ using UnityEngine;
 
 public class MainMenuScript : MonoBehaviour
 {
-    private enum MenuState { Main, LevelSelect, Options, Erase};
+    private enum MenuState { Main, LevelSelect, Options, Erase, SelectSave};
     private MenuState currentState;
     private GameObject main;
     private GameObject levelSelect;
     private GameObject options;
     private GameObject erase;
+    private GameObject selectSave;
     private int levelsCleared;
     public Dropdown dropdown;
     public int total_levels = 3;
+    public int selectedSaveFile;
     
     void Awake()
     {
-        currentState = MenuState.Main;
+        
+        
         main = transform.Find("Main").gameObject;
         levelSelect = transform.Find("LevelSelect").gameObject;
         options = transform.Find("Options").gameObject;
         erase = transform.Find("ConfirmErase").gameObject;
+        selectSave = transform.Find("SaveFileSelect").gameObject;
+        Debug.Log(selectSave);
         levelsCleared = PlayerPrefs.GetInt("LevelsCleared", 0);
         Debug.Log("Loaded Save Data: Levels cleared = " + levelsCleared);
         SetupLevelSelect();
@@ -31,6 +36,7 @@ public class MainMenuScript : MonoBehaviour
         dropdown.onValueChanged.AddListener(delegate {
             updateResolution(dropdown);
         });
+        currentState = MenuState.SelectSave;
     }
 
     // Update is called once per frame
@@ -43,6 +49,7 @@ public class MainMenuScript : MonoBehaviour
                 levelSelect.SetActive(false);
                 options.SetActive(false);
                 erase.SetActive(false);
+                selectSave.SetActive(false);
                 break;
 
             case MenuState.LevelSelect:
@@ -50,6 +57,7 @@ public class MainMenuScript : MonoBehaviour
                 main.SetActive(false);
                 options.SetActive(false);
                 erase.SetActive(false);
+                selectSave.SetActive(false);
                 break;
 
             case MenuState.Options:
@@ -57,6 +65,7 @@ public class MainMenuScript : MonoBehaviour
                 main.SetActive(false);
                 levelSelect.SetActive(false);
                 erase.SetActive(false);
+                selectSave.SetActive(false);
                 break;
 
             case MenuState.Erase:
@@ -64,6 +73,15 @@ public class MainMenuScript : MonoBehaviour
                 options.SetActive(false);
                 main.SetActive(false);
                 levelSelect.SetActive(false);
+                selectSave.SetActive(false);
+                break;
+
+            case MenuState.SelectSave:
+                selectSave.SetActive(true);
+                options.SetActive(false);
+                main.SetActive(false);
+                levelSelect.SetActive(false);
+                erase.SetActive(false);
                 break;
         }
     }
@@ -176,5 +194,12 @@ public class MainMenuScript : MonoBehaviour
                 //Debug.Log("level button disabled");
             }
         }
+    }
+
+    public void SelectSaveFile(int saveFile)
+    {
+        selectedSaveFile = saveFile;
+        Debug.Log("Selected save file number " + saveFile);
+        currentState = MenuState.Main;
     }
 }
