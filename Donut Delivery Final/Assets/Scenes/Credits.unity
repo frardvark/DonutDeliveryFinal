@@ -621,7 +621,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -8.042419, y: -631}
-  m_SizeDelta: {x: 500, y: 1000}
+  m_SizeDelta: {x: 600, y: 1200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2086122186
 MonoBehaviour:
@@ -686,7 +686,29 @@ MonoBehaviour:
     Ben Sound- Energy
 
 
-    Special Thanks to
+    AI + Truck Mechanics
+
+    Julian Showen
+
+
+    Scene Assembly + House Selection Mechanics
+
+    Althea Smith
+
+
+    Menu/UI Functionality + Sound Effects
+
+    Pablo Sanchez
+
+
+    Asset and Level Design
+
+    Jalen Connelly
+
+    Tim Thai
+
+
+    Special Thanks to Our Professors
 
     Jeremiah Blanchard and Nick Heitzman
 

@@ -177,4 +177,9 @@ public class MainMenuScript : MonoBehaviour
             }
         }
     }
+
+    public void OnCredits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
 }
