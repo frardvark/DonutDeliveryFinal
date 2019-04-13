@@ -18,6 +18,7 @@ public class GameTimer : MonoBehaviour
     public static bool playerLost;
     public int level;
     GameObject player;
+    Rigidbody player_rb;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,8 @@ public class GameTimer : MonoBehaviour
         housesDelivered = 0;
         totalHouses = player.GetComponent<HouseSelection>().deliveryGoal;
         counter.text = "Donuts Delivered: " + housesDelivered + "/" + totalHouses;
+        player_rb = player.GetComponent<Rigidbody>();
+        Debug.Log("This is level: " + level);
     }
 
     // Update is called once per frame
@@ -40,19 +43,26 @@ public class GameTimer : MonoBehaviour
             timeLeft -= Time.deltaTime;
         }
 
-
+        //win condition
         if (housesDelivered == totalHouses && !playerLost)
         {
             timerStopped = true;
+            saveLevelProgress();
             if (level == 1)
             {
                 message.text = "Level 1 Complete!";
-                Invoke("levelChange", 2f);
+                Invoke("levelChange2", 2f);
 
             }
             else if (level == 2)
             {
+                message.text = "Level 2 Complete!";
+                Invoke("levelChange3", 2f);
+            }
+            else if(level == 3)
+            {
                 message.text = "All donuts delivered on time! Congratulations!";
+                Invoke("loadCredits", 2f);
             }
 
             
@@ -87,7 +97,7 @@ public class GameTimer : MonoBehaviour
 
         if (!timerStopped)
             timerText.text = "Time Left: " + timeLeft.ToString("n2");
-       
+
     }
 
     public static void AddTime(float seconds)
@@ -95,10 +105,32 @@ public class GameTimer : MonoBehaviour
         timeLeft += seconds;
     }
 
-    public void levelChange()
+    public void levelChange2()
     {
-        //yield return new WaitForSeconds(5);
         SceneManager.LoadScene("Level 2");
     }
 
+    public void levelChange3()
+    {
+        SceneManager.LoadScene("Level 3");
+    }
+
+    public void loadCredits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
+    public void saveLevelProgress()
+    {
+        int levelsCleared = PlayerPrefs.GetInt("LevelsCleared", 0);
+
+        if (levelsCleared != level && level > levelsCleared)
+        {
+            levelsCleared = level;
+            PlayerPrefs.SetInt("LevelsCleared", levelsCleared);
+            Debug.Log("Saved level progress, LevelsCleared = " + levelsCleared);
+        }
+    }
+
+    
 }

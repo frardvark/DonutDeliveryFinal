@@ -8,7 +8,10 @@ public class HouseSelection : MonoBehaviour
     public List<GameObject> deliveryTargets;
     public GameObject targetHouse;
     public GameObject Ring;
+    public GameObject throwRangeBig;
+    public GameObject throwRangeSmall;
     public GameObject range;
+    public GameObject rangeRing;
     public int donutType;
     public int deliveryGoal;    //Number of houses you have to deliver to beat level  
 
@@ -24,7 +27,8 @@ public class HouseSelection : MonoBehaviour
     public void onDelivery()
     {
         deliveryGoal--;
-        Destroy(range); //Test this. Does it delete the whole variable or just the one ring object?
+        Destroy(rangeRing);
+        Destroy(range);
         GameObject.FindGameObjectWithTag("Arrow").GetComponent<Renderer>().material.color = Color.white;
         Debug.Log("Delivery Goal " + deliveryGoal);
         if (deliveryGoal > 0)
@@ -57,35 +61,45 @@ public class HouseSelection : MonoBehaviour
                     }
                 }
                
-                    deliveryTargets.RemoveAt(pos);
-                    range = Instantiate(Ring, house.transform.GetChild(2).transform);
-                    
+                deliveryTargets.RemoveAt(pos);
+                if (house.name.Contains("3F"))
+                    range = Instantiate(throwRangeBig, house.transform);
+                else
+                    range = Instantiate(throwRangeSmall, house.transform);
 
-                if (GameObject.FindGameObjectWithTag("Canvas").GetComponent<GameTimer>().level == 2)
+                rangeRing = range.transform.GetChild(0).gameObject;
+
+                int level = GameObject.FindGameObjectWithTag("Canvas").GetComponent<GameTimer>().level;
+                
+                if ( level == 2 || level == 3)
                 {
-                    donutType = Random.Range(0, 2);
-                    switch (donutType)
-                    {
-                        case 0:   //Glazed Donut 
-                            {
-                                range.GetComponent<Renderer>().material.color = Color.yellow;
-                                break;
-                            }
-                        case 1:   //Chocolate Donut
-                            {
-                                range.GetComponent<Renderer>().material.color = new Color32(102,54,5,0);
-                                break;
-                            }
-                    }
+                    donutType = Random.Range(0, level);
+                    
                 }
                 else
                 {
                     donutType = 0;
-                    range.GetComponent<Renderer>().material.color = Color.yellow;
                 }
-                    
+                switch (donutType)
+                {
+                    case 0:   //Glazed Donut 
+                        {
+                            rangeRing.GetComponent<Renderer>().material.color = Color.yellow;
+                            break;
+                        }
+                    case 1:   //Chocolate Donut
+                        {
+                            rangeRing.GetComponent<Renderer>().material.color = new Color32(102, 54, 5, 0);
+                            break;
+                        }
+                    case 2:
+                        {
+                            rangeRing.GetComponent<Renderer>().material.color = new Color32(255, 51, 153, 1);
+                            break;
+                        }
+                }
 
-                }
+            }
                 return house;
         }
     }

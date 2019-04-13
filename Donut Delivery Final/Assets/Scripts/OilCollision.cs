@@ -9,8 +9,8 @@ public class OilCollision : MonoBehaviour
 
     private void Start()
     {
-        GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
-        source = camera.GetComponent<AudioSource>();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        source = player.GetComponent<AudioSource>();
         soundEffect = (AudioClip)Resources.Load("SoundFX/skid");
     }
 

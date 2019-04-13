@@ -6,9 +6,11 @@ public class ThrowDonut : MonoBehaviour
 {
     public GameObject player;
     public GameObject house;
+    public GameObject throwRange;
     public GameObject arrow;
     public GameObject glazed;
     public GameObject choc;
+    public GameObject sprinkle;
     public int donutType;
     public bool canFire;
 
@@ -17,7 +19,6 @@ public class ThrowDonut : MonoBehaviour
     {
         house = GetComponent<HouseSelection>().targetHouse;
         player = GameObject.FindGameObjectWithTag("Player");
-        //arrow = GameObject.Find("Arrow");
         canFire = false;
     }
 
@@ -25,6 +26,7 @@ public class ThrowDonut : MonoBehaviour
     void Update()
     {
         house = GetComponent<HouseSelection>().targetHouse;
+        throwRange = GetComponent<HouseSelection>().range;
         donutType = GameObject.FindGameObjectWithTag("Player").GetComponent<HouseSelection>().donutType;
 
         //Fire donut with 'E' key
@@ -37,21 +39,24 @@ public class ThrowDonut : MonoBehaviour
         {
             FireDonut();
         }
+        if (Input.GetKey(KeyCode.F) && canFire && donutType == 2)
+        {
+            FireDonut();
+        }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == house.transform.GetChild(2).name)
+        if (other.gameObject.name == throwRange.gameObject.name)
         {
             canFire = true;
             GameObject.FindGameObjectWithTag("Arrow").GetComponent<Renderer>().material.color = Color.green;
-            //Debug.Log("Can fire!");
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.name == house.transform.GetChild(0).name)
+        if (other.gameObject.name == throwRange.gameObject.name)
         {
             canFire = false;
             GameObject.FindGameObjectWithTag("Arrow").GetComponent<Renderer>().material.color = Color.white;
@@ -78,6 +83,10 @@ public class ThrowDonut : MonoBehaviour
         {
             donut = Instantiate(choc);
         }
+        else if(donutType == 2)
+        {
+            donut = Instantiate(sprinkle);
+        }
         else
         {
             donut = Instantiate(glazed);
@@ -85,12 +94,11 @@ public class ThrowDonut : MonoBehaviour
 
         if (donut != null)
         {
-            //Debug.Log("Donut not null");
+            donut.tag = "Donut";
         }
         
             if (donut.GetComponent<Rigidbody>() == null)
             {
-                //Debug.Log("Rigidbody not attached, attaching");
                 donut.AddComponent<Rigidbody>();
             }
             if (donut.GetComponent<DonutCollision>() == null)
@@ -104,7 +112,5 @@ public class ThrowDonut : MonoBehaviour
             Vector3 direction = target - position;
             donut_rb.AddForce(direction * 100);
             canFire = false;
-            //Debug.Log("Reached end of fireDonut script");
-        
     }
 }
