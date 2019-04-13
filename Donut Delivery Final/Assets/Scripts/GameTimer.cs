@@ -62,6 +62,7 @@ public class GameTimer : MonoBehaviour
             else if(level == 3)
             {
                 message.text = "All donuts delivered on time! Congratulations!";
+                Invoke("loadCredits", 2f);
             }
 
             
@@ -112,6 +113,11 @@ public class GameTimer : MonoBehaviour
     public void levelChange3()
     {
         SceneManager.LoadScene("Level 3");
+    }
+
+    public void loadCredits()
+    {
+        SceneManager.LoadScene("Credits");
     }
 
     public void saveLevelProgress()
