@@ -6,27 +6,41 @@ using UnityEngine;
 
 public class MainMenuScript : MonoBehaviour
 {
-    private enum MenuState { Main, LevelSelect, Options, Erase};
+    private enum MenuState { Main, LevelSelect, Options, Erase, SaveSelect};
     private MenuState currentState;
     private GameObject main;
     private GameObject levelSelect;
     private GameObject options;
     private GameObject erase;
+    private GameObject saveSelect;
     private int levelsCleared;
-    public Dropdown dropdown;
+    private Dropdown dropdown;
     public int total_levels = 3;
+    //public int saveFile;
+    private SaveData saveData;
+    public Text file1;
+    public Text file2;
+    public Text file3;
+    public Text file4;
+    private Text[] files;
     
     void Awake()
     {
-        currentState = MenuState.Main;
+        currentState = MenuState.SaveSelect;
         main = transform.Find("Main").gameObject;
         levelSelect = transform.Find("LevelSelect").gameObject;
         options = transform.Find("Options").gameObject;
         erase = transform.Find("ConfirmErase").gameObject;
-        levelsCleared = PlayerPrefs.GetInt("LevelsCleared", 0);
-        Debug.Log("Loaded Save Data: Levels cleared = " + levelsCleared);
-        SetupLevelSelect();
-        Debug.Log(options.transform.Find("Dropdown1").GetComponent<Dropdown>());
+        saveSelect = transform.Find("FileSelect").gameObject;
+
+        files = new Text[4];
+        files[0] = file1;
+        files[1] = file2;
+        files[2] = file3;
+        files[3] = file4;
+        SetupFiles();
+        
+        //Debug.Log(options.transform.Find("Dropdown1").GetComponent<Dropdown>());
         dropdown = options.transform.Find("Dropdown1").GetComponent<Dropdown>();
         dropdown.onValueChanged.AddListener(delegate {
             updateResolution(dropdown);
@@ -43,6 +57,7 @@ public class MainMenuScript : MonoBehaviour
                 levelSelect.SetActive(false);
                 options.SetActive(false);
                 erase.SetActive(false);
+                saveSelect.SetActive(false);
                 break;
 
             case MenuState.LevelSelect:
@@ -50,6 +65,7 @@ public class MainMenuScript : MonoBehaviour
                 main.SetActive(false);
                 options.SetActive(false);
                 erase.SetActive(false);
+                saveSelect.SetActive(false);
                 break;
 
             case MenuState.Options:
@@ -57,10 +73,20 @@ public class MainMenuScript : MonoBehaviour
                 main.SetActive(false);
                 levelSelect.SetActive(false);
                 erase.SetActive(false);
+                saveSelect.SetActive(false);
                 break;
 
             case MenuState.Erase:
                 erase.SetActive(true);
+                options.SetActive(false);
+                main.SetActive(false);
+                levelSelect.SetActive(false);
+                saveSelect.SetActive(false);
+                break;
+
+            case MenuState.SaveSelect:
+                saveSelect.SetActive(true);
+                erase.SetActive(false);
                 options.SetActive(false);
                 main.SetActive(false);
                 levelSelect.SetActive(false);
@@ -70,8 +96,11 @@ public class MainMenuScript : MonoBehaviour
 
     public void onPlay()
     {
-        Debug.Log("Play button clicked");
-        levelsCleared = PlayerPrefs.GetInt("LevelsCleared", 0);
+        //Debug.Log("Play button clicked");
+        //levelsCleared = PlayerPrefs.GetInt("LevelsCleared", 0);
+
+        levelsCleared = saveData.levelsCleared;
+
         int toLoad = levelsCleared + 1;
         if (toLoad > total_levels)
             toLoad = total_levels;
@@ -121,6 +150,7 @@ public class MainMenuScript : MonoBehaviour
         Screen.fullScreen = true;
     }
 
+    //TODO: erase save files
     public void EraseData()
     {
         PlayerPrefs.DeleteAll();
@@ -158,6 +188,7 @@ public class MainMenuScript : MonoBehaviour
     {
         //make array for level buttons
         Debug.Log("Total levels: " + total_levels);
+        Debug.Log("SetupLevel reports " + levelsCleared + " levels cleared");
         levelSelect = transform.Find("LevelSelect").gameObject;
         Transform[] level_buttons = new Transform[total_levels];
         Transform level1_button = levelSelect.transform.Find("level1_button");
@@ -175,11 +206,42 @@ public class MainMenuScript : MonoBehaviour
                 level_buttons[i].GetComponent<Button>().interactable = false;
                 //Debug.Log("level button disabled");
             }
+            else
+            {
+                level_buttons[i].GetComponent<Button>().interactable = true;
+            }
         }
+    }
+
+    public void SetupFiles()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            SaveData data = SaveSystem.LoadState(i + 1);
+            files[i].text = data.levelsCleared + " levels cleared";
+        }
+        
+
     }
 
     public void OnCredits()
     {
         SceneManager.LoadScene("Credits");
+    }
+
+    public void ChooseSaveFile(int number)
+    {
+        //Debug.Log("File " + number + " called");
+        PlayerPrefs.SetInt("saveFile", number);
+        saveData = SaveSystem.LoadState(number);
+        levelsCleared = saveData.levelsCleared;
+        Debug.Log("Loaded Save Data: Levels cleared = " + levelsCleared);
+        SetupLevelSelect();
+        currentState = MenuState.Main;
+    }
+
+    public void SaveFileMenu()
+    {
+        currentState = MenuState.SaveSelect;
     }
 }
