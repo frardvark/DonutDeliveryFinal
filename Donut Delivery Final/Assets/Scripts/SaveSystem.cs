@@ -44,15 +44,28 @@ public static class SaveSystem
         }
     }
 
+    public static void ClearFile(int saveFile)
+    {
+        SaveState(saveFile, 0);
+    }
+
+    public static void ClearAllData()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            SaveState(i + 1, 0);
+        }
+    }
+
     private static string getName(int saveFile)
     {
-        Debug.Log("getName called with saveFile number " + saveFile);
+        //Debug.Log("getName called with saveFile number " + saveFile);
         string fileName = "";
         switch (saveFile)
         {
             case 1:
                 fileName = "file1.sav";
-                Debug.Log("Case 1 called");
+                //Debug.Log("Case 1 called");
                 break;
             case 2:
                 fileName = "file2.sav";
@@ -65,7 +78,7 @@ public static class SaveSystem
                 break;
             default:
                 fileName = "file1.sav";
-                Debug.Log("Default called");
+                //Debug.Log("Default called");
                 break;
         }
         return fileName;

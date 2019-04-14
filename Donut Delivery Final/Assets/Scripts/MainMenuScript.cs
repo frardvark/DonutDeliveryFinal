@@ -6,23 +6,29 @@ using UnityEngine;
 
 public class MainMenuScript : MonoBehaviour
 {
-    private enum MenuState { Main, LevelSelect, Options, Erase, SaveSelect};
+    private enum MenuState { Main, LevelSelect, Options, Erase, SaveSelect, EraseFile};
     private MenuState currentState;
     private GameObject main;
     private GameObject levelSelect;
     private GameObject options;
     private GameObject erase;
     private GameObject saveSelect;
+    private GameObject eraseFile;
     private int levelsCleared;
     private Dropdown dropdown;
     public int total_levels = 3;
-    //public int saveFile;
     private SaveData saveData;
     public Text file1;
     public Text file2;
     public Text file3;
     public Text file4;
     private Text[] files;
+
+    public Text e_file1;
+    public Text e_file2;
+    public Text e_file3;
+    public Text e_file4;
+    private Text[] e_files;
     
     void Awake()
     {
@@ -32,12 +38,20 @@ public class MainMenuScript : MonoBehaviour
         options = transform.Find("Options").gameObject;
         erase = transform.Find("ConfirmErase").gameObject;
         saveSelect = transform.Find("FileSelect").gameObject;
+        eraseFile = transform.Find("EraseFile").gameObject;
+        Debug.Log(eraseFile);
 
         files = new Text[4];
         files[0] = file1;
         files[1] = file2;
         files[2] = file3;
         files[3] = file4;
+        e_files = new Text[4];
+        e_files[0] = e_file1;
+        e_files[1] = e_file2;
+        e_files[2] = e_file3;
+        e_files[3] = e_file4;
+
         SetupFiles();
         
         //Debug.Log(options.transform.Find("Dropdown1").GetComponent<Dropdown>());
@@ -50,6 +64,7 @@ public class MainMenuScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         switch (currentState)
         {
             case MenuState.Main:
@@ -58,6 +73,7 @@ public class MainMenuScript : MonoBehaviour
                 options.SetActive(false);
                 erase.SetActive(false);
                 saveSelect.SetActive(false);
+                eraseFile.SetActive(false);
                 break;
 
             case MenuState.LevelSelect:
@@ -66,6 +82,7 @@ public class MainMenuScript : MonoBehaviour
                 options.SetActive(false);
                 erase.SetActive(false);
                 saveSelect.SetActive(false);
+                eraseFile.SetActive(false);
                 break;
 
             case MenuState.Options:
@@ -74,6 +91,7 @@ public class MainMenuScript : MonoBehaviour
                 levelSelect.SetActive(false);
                 erase.SetActive(false);
                 saveSelect.SetActive(false);
+                eraseFile.SetActive(false);
                 break;
 
             case MenuState.Erase:
@@ -82,10 +100,21 @@ public class MainMenuScript : MonoBehaviour
                 main.SetActive(false);
                 levelSelect.SetActive(false);
                 saveSelect.SetActive(false);
+                eraseFile.SetActive(false);
                 break;
 
             case MenuState.SaveSelect:
                 saveSelect.SetActive(true);
+                erase.SetActive(false);
+                options.SetActive(false);
+                main.SetActive(false);
+                levelSelect.SetActive(false);
+                eraseFile.SetActive(false);
+                break;
+
+            case MenuState.EraseFile:
+                eraseFile.SetActive(true);
+                saveSelect.SetActive(false);
                 erase.SetActive(false);
                 options.SetActive(false);
                 main.SetActive(false);
@@ -96,9 +125,6 @@ public class MainMenuScript : MonoBehaviour
 
     public void onPlay()
     {
-        //Debug.Log("Play button clicked");
-        //levelsCleared = PlayerPrefs.GetInt("LevelsCleared", 0);
-
         levelsCleared = saveData.levelsCleared;
 
         int toLoad = levelsCleared + 1;
@@ -149,15 +175,16 @@ public class MainMenuScript : MonoBehaviour
     {
         Screen.fullScreen = true;
     }
-
-    //TODO: erase save files
+    
+    //deletes all save data and reloads scene
     public void EraseData()
     {
         PlayerPrefs.DeleteAll();
         Debug.Log("Player data erased!");
         levelsCleared = 0;
-        currentState = MenuState.Options;
-        SetupLevelSelect();
+        currentState = MenuState.SaveSelect;
+        SaveSystem.ClearAllData();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void updateResolution(Dropdown res_dropdown)
@@ -184,6 +211,7 @@ public class MainMenuScript : MonoBehaviour
 
     }
 
+    //disables level select buttons if appropriate levels have not been cleared
     public void SetupLevelSelect()
     {
         //make array for level buttons
@@ -213,15 +241,15 @@ public class MainMenuScript : MonoBehaviour
         }
     }
 
+    //sets the text below files in save file select menu
     public void SetupFiles()
     {
         for (int i = 0; i < 4; i++)
         {
             SaveData data = SaveSystem.LoadState(i + 1);
             files[i].text = data.levelsCleared + " levels cleared";
+            e_files[i].text = files[i].text;
         }
-        
-
     }
 
     public void OnCredits()
@@ -242,6 +270,17 @@ public class MainMenuScript : MonoBehaviour
 
     public void SaveFileMenu()
     {
+        Debug.Log(currentState);
+        Debug.Log("Opening save file menu");
         currentState = MenuState.SaveSelect;
+        Debug.Log(currentState);
+    }
+
+    public void OpenEraseFileMenu()
+    {
+        Debug.Log(currentState);
+        Debug.Log("Opening erase file menu");
+        currentState = MenuState.EraseFile;
+        Debug.Log(currentState);
     }
 }
