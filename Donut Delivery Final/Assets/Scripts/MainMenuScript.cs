@@ -125,6 +125,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void onPlay()
     {
+        /*
         levelsCleared = saveData.levelsCleared;
 
         int toLoad = levelsCleared + 1;
@@ -132,6 +133,8 @@ public class MainMenuScript : MonoBehaviour
             toLoad = total_levels;
         Debug.Log("Loading level " + toLoad);
         SceneManager.LoadScene(toLoad);
+        */
+        SceneManager.LoadScene("Level 1");
     }
 
     public void onBack()
