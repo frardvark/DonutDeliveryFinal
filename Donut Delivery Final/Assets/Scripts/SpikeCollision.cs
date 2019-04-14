@@ -19,6 +19,7 @@ public class SpikeCollision : MonoBehaviour
 
         if (col.gameObject.tag == "Player")
         {
+            Debug.Log("Bruh");
             col.gameObject.SendMessage("HitObstacle", 1); //Call Method For Spike Slow Down
             source.PlayOneShot(soundEffect);
         }
