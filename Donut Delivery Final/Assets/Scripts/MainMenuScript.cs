@@ -283,4 +283,11 @@ public class MainMenuScript : MonoBehaviour
         currentState = MenuState.EraseFile;
         Debug.Log(currentState);
     }
+
+    public void EraseFile(int fileNumber)
+    {
+        SaveSystem.ClearFile(fileNumber);
+        Debug.Log("Erased file " + fileNumber);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
