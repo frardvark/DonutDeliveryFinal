@@ -127,7 +127,6 @@ public class MainMenuScript : MonoBehaviour
     {
         /*
         levelsCleared = saveData.levelsCleared;
-
         int toLoad = levelsCleared + 1;
         if (toLoad > total_levels)
             toLoad = total_levels;
