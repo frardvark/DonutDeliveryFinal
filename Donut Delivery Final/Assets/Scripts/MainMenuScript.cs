@@ -6,31 +6,37 @@ using UnityEngine;
 
 public class MainMenuScript : MonoBehaviour
 {
-    private enum MenuState { Main, LevelSelect, Options, Erase};
+    private enum MenuState { Main, LevelSelect, Options, Erase, SelectSave};
     private MenuState currentState;
     private GameObject main;
     private GameObject levelSelect;
     private GameObject options;
     private GameObject erase;
+    private GameObject selectSave;
     private int levelsCleared;
     public Dropdown dropdown;
     public int total_levels = 3;
+    public int selectedSaveFile;
     
     void Awake()
     {
-        currentState = MenuState.Main;
+        
+        
         main = transform.Find("Main").gameObject;
         levelSelect = transform.Find("LevelSelect").gameObject;
         options = transform.Find("Options").gameObject;
         erase = transform.Find("ConfirmErase").gameObject;
-        levelsCleared = PlayerPrefs.GetInt("LevelsCleared", 0);
-        Debug.Log("Loaded Save Data: Levels cleared = " + levelsCleared);
+        selectSave = transform.Find("SaveFileSelect").gameObject;
+        //Debug.Log(selectSave);
+        
+        //Debug.Log("Loaded Save Data: Levels cleared = " + levelsCleared);
         SetupLevelSelect();
         Debug.Log(options.transform.Find("Dropdown1").GetComponent<Dropdown>());
         dropdown = options.transform.Find("Dropdown1").GetComponent<Dropdown>();
         dropdown.onValueChanged.AddListener(delegate {
             updateResolution(dropdown);
         });
+        currentState = MenuState.SelectSave;
     }
 
     // Update is called once per frame
@@ -43,6 +49,7 @@ public class MainMenuScript : MonoBehaviour
                 levelSelect.SetActive(false);
                 options.SetActive(false);
                 erase.SetActive(false);
+                selectSave.SetActive(false);
                 break;
 
             case MenuState.LevelSelect:
@@ -50,6 +57,7 @@ public class MainMenuScript : MonoBehaviour
                 main.SetActive(false);
                 options.SetActive(false);
                 erase.SetActive(false);
+                selectSave.SetActive(false);
                 break;
 
             case MenuState.Options:
@@ -57,6 +65,7 @@ public class MainMenuScript : MonoBehaviour
                 main.SetActive(false);
                 levelSelect.SetActive(false);
                 erase.SetActive(false);
+                selectSave.SetActive(false);
                 break;
 
             case MenuState.Erase:
@@ -64,6 +73,15 @@ public class MainMenuScript : MonoBehaviour
                 options.SetActive(false);
                 main.SetActive(false);
                 levelSelect.SetActive(false);
+                selectSave.SetActive(false);
+                break;
+
+            case MenuState.SelectSave:
+                selectSave.SetActive(true);
+                options.SetActive(false);
+                main.SetActive(false);
+                levelSelect.SetActive(false);
+                erase.SetActive(false);
                 break;
         }
     }
@@ -181,5 +199,37 @@ public class MainMenuScript : MonoBehaviour
     public void OnCredits()
     {
         SceneManager.LoadScene("Credits");
+    }
+    
+    public void SelectSaveFile(int saveFile)
+    {
+        selectedSaveFile = saveFile;
+        Debug.Log("Selected save file number " + saveFile);
+        currentState = MenuState.Main;
+
+        //load save file
+        PlayerPrefs.SetInt("SaveFile", saveFile);
+        switch (saveFile)
+        {
+            case 1:
+                levelsCleared = PlayerPrefs.GetInt("LevelsCleared1", 0);
+                break;
+
+            case 2:
+                levelsCleared = PlayerPrefs.GetInt("LevelsCleared2", 0);
+                break;
+
+            case 3:
+                levelsCleared = PlayerPrefs.GetInt("LevelsCleared3", 0);
+                break;
+
+            case 4:
+                levelsCleared = PlayerPrefs.GetInt("LevelsCleared4", 0);
+                break;
+        }
+        Debug.Log("Loaded save data: levels cleared = " + levelsCleared);
+
+
+
     }
 }

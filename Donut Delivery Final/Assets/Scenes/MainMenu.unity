@@ -34718,6 +34718,28 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7496435383889322583, guid: e8ee03956666d224bb631741b9258c2c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6077714937672888780, guid: e8ee03956666d224bb631741b9258c2c,
+        type: 3}
+    - target: {fileID: 7496435383889322583, guid: e8ee03956666d224bb631741b9258c2c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectSaveFile
+      objectReference: {fileID: 0}
+    - target: {fileID: 8141997636255312876, guid: e8ee03956666d224bb631741b9258c2c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6077714937672888780, guid: e8ee03956666d224bb631741b9258c2c,
+        type: 3}
+    - target: {fileID: 8141997636255312876, guid: e8ee03956666d224bb631741b9258c2c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectSaveFile
+      objectReference: {fileID: 0}
     - target: {fileID: 6077714936653620738, guid: e8ee03956666d224bb631741b9258c2c,
         type: 3}
       propertyPath: m_Name
