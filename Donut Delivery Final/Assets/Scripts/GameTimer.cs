@@ -122,12 +122,18 @@ public class GameTimer : MonoBehaviour
 
     public void saveLevelProgress()
     {
-        int levelsCleared = PlayerPrefs.GetInt("LevelsCleared", 0);
+        int saveFile = PlayerPrefs.GetInt("saveFile", 1);
+        //int levelsCleared = PlayerPrefs.GetInt("LevelsCleared", 0);
+        SaveData data = SaveSystem.LoadState(saveFile);
+        int levelsCleared = data.levelsCleared;
+
+        
 
         if (levelsCleared != level && level > levelsCleared)
         {
             levelsCleared = level;
-            PlayerPrefs.SetInt("LevelsCleared", levelsCleared);
+            SaveSystem.SaveState(saveFile, levelsCleared);
+            //PlayerPrefs.SetInt("LevelsCleared", levelsCleared);
             Debug.Log("Saved level progress, LevelsCleared = " + levelsCleared);
         }
     }
