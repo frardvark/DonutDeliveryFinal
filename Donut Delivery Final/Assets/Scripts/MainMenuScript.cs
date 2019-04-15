@@ -6,14 +6,18 @@ using UnityEngine;
 
 public class MainMenuScript : MonoBehaviour
 {
-    private enum MenuState { Main, LevelSelect, Options, Erase, SaveSelect, EraseFile};
+    private enum MenuState { Main, LevelSelect, Options, Erase, SaveSelect, EraseFile, Tutorial};
     private MenuState currentState;
+
+    //panels
     private GameObject main;
     private GameObject levelSelect;
     private GameObject options;
     private GameObject erase;
     private GameObject saveSelect;
     private GameObject eraseFile;
+    private GameObject tutorial;
+
     private int levelsCleared;
     private Dropdown dropdown;
     public int total_levels = 3;
@@ -39,7 +43,10 @@ public class MainMenuScript : MonoBehaviour
         erase = transform.Find("ConfirmErase").gameObject;
         saveSelect = transform.Find("FileSelect").gameObject;
         eraseFile = transform.Find("EraseFile").gameObject;
-        Debug.Log(eraseFile);
+
+        /* Uncomment this */
+        //tutorial = transform.Find("Tutorial").gameObject;
+        
 
         files = new Text[4];
         files[0] = file1;
@@ -74,6 +81,7 @@ public class MainMenuScript : MonoBehaviour
                 erase.SetActive(false);
                 saveSelect.SetActive(false);
                 eraseFile.SetActive(false);
+                tutorial.SetActive(false);
                 break;
 
             case MenuState.LevelSelect:
@@ -83,6 +91,7 @@ public class MainMenuScript : MonoBehaviour
                 erase.SetActive(false);
                 saveSelect.SetActive(false);
                 eraseFile.SetActive(false);
+                tutorial.SetActive(false);
                 break;
 
             case MenuState.Options:
@@ -92,6 +101,7 @@ public class MainMenuScript : MonoBehaviour
                 erase.SetActive(false);
                 saveSelect.SetActive(false);
                 eraseFile.SetActive(false);
+                tutorial.SetActive(false);
                 break;
 
             case MenuState.Erase:
@@ -101,6 +111,7 @@ public class MainMenuScript : MonoBehaviour
                 levelSelect.SetActive(false);
                 saveSelect.SetActive(false);
                 eraseFile.SetActive(false);
+                tutorial.SetActive(false);
                 break;
 
             case MenuState.SaveSelect:
@@ -110,10 +121,22 @@ public class MainMenuScript : MonoBehaviour
                 main.SetActive(false);
                 levelSelect.SetActive(false);
                 eraseFile.SetActive(false);
+                tutorial.SetActive(false);
                 break;
 
             case MenuState.EraseFile:
                 eraseFile.SetActive(true);
+                saveSelect.SetActive(false);
+                erase.SetActive(false);
+                options.SetActive(false);
+                main.SetActive(false);
+                levelSelect.SetActive(false);
+                tutorial.SetActive(false);
+                break;
+
+            case MenuState.Tutorial:
+                tutorial.SetActive(true);
+                eraseFile.SetActive(false);
                 saveSelect.SetActive(false);
                 erase.SetActive(false);
                 options.SetActive(false);
@@ -137,6 +160,7 @@ public class MainMenuScript : MonoBehaviour
         SceneManager.LoadScene("Level 1");
     }
 
+    //go back to main menu
     public void onBack()
     {
         currentState = MenuState.Main;
@@ -292,5 +316,10 @@ public class MainMenuScript : MonoBehaviour
         SaveSystem.ClearFile(fileNumber);
         Debug.Log("Erased file " + fileNumber);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void ShowTutorial()
+    {
+        currentState = MenuState.Tutorial;
     }
 }
