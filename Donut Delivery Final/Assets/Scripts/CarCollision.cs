@@ -48,11 +48,16 @@ public class CarCollision : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //Debug.Log("Collision detected");
-        float vol = collision.relativeVelocity.magnitude / 40f;
-        if (vol > 0.4f)
-            vol = 0.4f;
+        float vol = collision.relativeVelocity.magnitude / 35f;
+        if (vol > 0.5f)
+            vol = 0.5f;
+
+        //Debug.Log(collision.collider.name);
+        string col_name = collision.collider.name;
         
-        if (collision.collider.tag != "Donut")
+        if (col_name.Contains("Tree") || col_name.Contains("House") || col_name.Contains("Mailbox") ||
+            col_name.Contains("post") || col_name.Contains("store") || col_name.Contains("Shop") ||
+            col_name.Contains("Pedestrian") || col_name.Contains("Texture") || col_name.Contains("Post"))
         {
             source.PlayOneShot(crash, vol);
             Debug.Log("Vol: " + vol);
@@ -63,7 +68,6 @@ public class CarCollision : MonoBehaviour
         {
             source.PlayOneShot(carHorn);
             coolDown += 2f;
-            //Debug.Log(player_rb.velocity.magnitude);
         }
     }
 }
