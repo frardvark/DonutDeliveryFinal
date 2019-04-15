@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class MainMenuScript : MonoBehaviour
 {
-    private enum MenuState { Main, LevelSelect, Options, Erase, SaveSelect, EraseFile};
+    private enum MenuState { Main, LevelSelect, Options, Erase, SaveSelect, EraseFile, HowToPlay };
     private MenuState currentState;
     private GameObject main;
     private GameObject levelSelect;
@@ -14,6 +14,8 @@ public class MainMenuScript : MonoBehaviour
     private GameObject erase;
     private GameObject saveSelect;
     private GameObject eraseFile;
+    private GameObject howToPlay;
+    private GameObject tutorial;
     private int levelsCleared;
     private Dropdown dropdown;
     public int total_levels = 3;
@@ -29,7 +31,15 @@ public class MainMenuScript : MonoBehaviour
     public Text e_file3;
     public Text e_file4;
     private Text[] e_files;
-    
+
+    public Sprite tutorialImage1;
+    public Sprite tutorialImage2;
+    public Sprite tutorialImage3;
+    public Sprite tutorialImage4;
+    public Sprite tutorialImage5;
+    Sprite[] slides;
+    int currSlide;
+
     void Awake()
     {
         currentState = MenuState.SaveSelect;
@@ -39,6 +49,8 @@ public class MainMenuScript : MonoBehaviour
         erase = transform.Find("ConfirmErase").gameObject;
         saveSelect = transform.Find("FileSelect").gameObject;
         eraseFile = transform.Find("EraseFile").gameObject;
+        howToPlay = transform.Find("HowToPlay").gameObject;
+        tutorial = transform.Find("Tutorial").gameObject;
         Debug.Log(eraseFile);
 
         files = new Text[4];
@@ -59,6 +71,8 @@ public class MainMenuScript : MonoBehaviour
         dropdown.onValueChanged.AddListener(delegate {
             updateResolution(dropdown);
         });
+
+        slides = new Sprite[] { tutorialImage1, tutorialImage2, tutorialImage3, tutorialImage4, tutorialImage5 };
     }
 
     // Update is called once per frame
@@ -74,6 +88,8 @@ public class MainMenuScript : MonoBehaviour
                 erase.SetActive(false);
                 saveSelect.SetActive(false);
                 eraseFile.SetActive(false);
+                howToPlay.SetActive(false);
+                tutorial.SetActive(false);
                 break;
 
             case MenuState.LevelSelect:
@@ -83,6 +99,8 @@ public class MainMenuScript : MonoBehaviour
                 erase.SetActive(false);
                 saveSelect.SetActive(false);
                 eraseFile.SetActive(false);
+                howToPlay.SetActive(false);
+                tutorial.SetActive(false);
                 break;
 
             case MenuState.Options:
@@ -92,6 +110,8 @@ public class MainMenuScript : MonoBehaviour
                 erase.SetActive(false);
                 saveSelect.SetActive(false);
                 eraseFile.SetActive(false);
+                howToPlay.SetActive(false);
+                tutorial.SetActive(false);
                 break;
 
             case MenuState.Erase:
@@ -101,6 +121,8 @@ public class MainMenuScript : MonoBehaviour
                 levelSelect.SetActive(false);
                 saveSelect.SetActive(false);
                 eraseFile.SetActive(false);
+                howToPlay.SetActive(false);
+                tutorial.SetActive(false);
                 break;
 
             case MenuState.SaveSelect:
@@ -110,6 +132,8 @@ public class MainMenuScript : MonoBehaviour
                 main.SetActive(false);
                 levelSelect.SetActive(false);
                 eraseFile.SetActive(false);
+                howToPlay.SetActive(false);
+                tutorial.SetActive(false);
                 break;
 
             case MenuState.EraseFile:
@@ -119,6 +143,19 @@ public class MainMenuScript : MonoBehaviour
                 options.SetActive(false);
                 main.SetActive(false);
                 levelSelect.SetActive(false);
+                howToPlay.SetActive(false);
+                tutorial.SetActive(false);
+                break;
+
+            case MenuState.HowToPlay:
+                eraseFile.SetActive(false);
+                saveSelect.SetActive(false);
+                erase.SetActive(false);
+                options.SetActive(false);
+                main.SetActive(false);
+                levelSelect.SetActive(false);
+                howToPlay.SetActive(true);
+                tutorial.SetActive(true);
                 break;
         }
     }
@@ -166,6 +203,26 @@ public class MainMenuScript : MonoBehaviour
     public void quitGame()
     {
         Application.Quit();
+    }
+
+    public void onHowToPlay()
+    {
+        currSlide = 0;
+        currentState = MenuState.HowToPlay;
+        tutorial.GetComponent<Image>().sprite = slides[currSlide];
+        howToPlay.transform.GetChild(0).GetComponent<Text>().text = (currSlide % 5 + 1) + "/5";
+    }
+
+    public void previous()
+    {
+        tutorial.GetComponent<Image>().sprite = slides[(--currSlide) % 5];
+        howToPlay.transform.GetChild(0).GetComponent<Text>().text = (currSlide % 5 + 1) + "/5";
+    }
+
+    public void next()
+    {
+        tutorial.GetComponent<Image>().sprite = slides[(++currSlide) % 5];
+        howToPlay.transform.GetChild(0).GetComponent<Text>().text = (currSlide % 5 + 1) + "/5";
     }
 
     public void windowed()
