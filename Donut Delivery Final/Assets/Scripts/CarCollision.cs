@@ -48,9 +48,9 @@ public class CarCollision : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //Debug.Log("Collision detected");
-        float vol = collision.relativeVelocity.magnitude / 10f;
-        if (vol > 1)
-            vol = 1;
+        float vol = collision.relativeVelocity.magnitude / 40f;
+        if (vol > 0.4f)
+            vol = 0.4f;
         
         if (collision.collider.tag != "Donut")
         {
