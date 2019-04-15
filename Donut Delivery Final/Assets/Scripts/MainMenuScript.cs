@@ -6,18 +6,27 @@ using UnityEngine;
 
 public class MainMenuScript : MonoBehaviour
 {
-    private enum MenuState { Main, LevelSelect, Options, Erase, SelectSave};
+    private enum MenuState { Main, LevelSelect, Options, Erase, SelectSave, HowToPlay};
     private MenuState currentState;
     private GameObject main;
     private GameObject levelSelect;
     private GameObject options;
     private GameObject erase;
     private GameObject selectSave;
+    private GameObject howToPlay;
+    private GameObject tutorial;
     private int levelsCleared;
     public Dropdown dropdown;
     public int total_levels = 3;
     public int selectedSaveFile;
-    
+    public Sprite tutorialImage1;
+    public Sprite tutorialImage2;
+    public Sprite tutorialImage3;
+    public Sprite tutorialImage4;
+    public Sprite tutorialImage5;
+    Sprite[] slides;
+    int currSlide;
+
     void Awake()
     {
         
@@ -27,8 +36,10 @@ public class MainMenuScript : MonoBehaviour
         options = transform.Find("Options").gameObject;
         erase = transform.Find("ConfirmErase").gameObject;
         selectSave = transform.Find("SaveFileSelect").gameObject;
+        howToPlay = transform.Find("HowToPlay").gameObject;
+        tutorial = transform.Find("Tutorial").gameObject;
         //Debug.Log(selectSave);
-        
+
         //Debug.Log("Loaded Save Data: Levels cleared = " + levelsCleared);
         SetupLevelSelect();
         Debug.Log(options.transform.Find("Dropdown1").GetComponent<Dropdown>());
@@ -37,6 +48,8 @@ public class MainMenuScript : MonoBehaviour
             updateResolution(dropdown);
         });
         currentState = MenuState.SelectSave;
+
+        slides = new Sprite[] { tutorialImage1, tutorialImage2, tutorialImage3, tutorialImage4, tutorialImage5 };
     }
 
     // Update is called once per frame
@@ -50,6 +63,8 @@ public class MainMenuScript : MonoBehaviour
                 options.SetActive(false);
                 erase.SetActive(false);
                 selectSave.SetActive(false);
+                howToPlay.SetActive(false);
+                tutorial.SetActive(false);
                 break;
 
             case MenuState.LevelSelect:
@@ -58,6 +73,8 @@ public class MainMenuScript : MonoBehaviour
                 options.SetActive(false);
                 erase.SetActive(false);
                 selectSave.SetActive(false);
+                howToPlay.SetActive(false);
+                tutorial.SetActive(false);
                 break;
 
             case MenuState.Options:
@@ -66,6 +83,8 @@ public class MainMenuScript : MonoBehaviour
                 levelSelect.SetActive(false);
                 erase.SetActive(false);
                 selectSave.SetActive(false);
+                howToPlay.SetActive(false);
+                tutorial.SetActive(false);
                 break;
 
             case MenuState.Erase:
@@ -74,6 +93,8 @@ public class MainMenuScript : MonoBehaviour
                 main.SetActive(false);
                 levelSelect.SetActive(false);
                 selectSave.SetActive(false);
+                howToPlay.SetActive(false);
+                tutorial.SetActive(false);
                 break;
 
             case MenuState.SelectSave:
@@ -82,6 +103,18 @@ public class MainMenuScript : MonoBehaviour
                 main.SetActive(false);
                 levelSelect.SetActive(false);
                 erase.SetActive(false);
+                howToPlay.SetActive(false);
+                tutorial.SetActive(false);
+                break;
+
+            case MenuState.HowToPlay:
+                selectSave.SetActive(false);
+                options.SetActive(false);
+                main.SetActive(false);
+                levelSelect.SetActive(false);
+                erase.SetActive(false);
+                howToPlay.SetActive(true);
+                tutorial.SetActive(true);
                 break;
         }
     }
@@ -122,6 +155,26 @@ public class MainMenuScript : MonoBehaviour
     public void onErase()
     {
         currentState = MenuState.Erase;
+    }
+
+    public void onHowToPlay()
+    {
+        currSlide = 0;
+        currentState = MenuState.HowToPlay;
+        tutorial.GetComponent<Image>().sprite = slides[currSlide];
+        howToPlay.transform.GetChild(0).GetComponent<Text>().text = (currSlide % 5 + 1) + "/5";
+    }
+
+    public void previous()
+    {
+        tutorial.GetComponent<Image>().sprite = slides[(--currSlide) % 5];
+        howToPlay.transform.GetChild(0).GetComponent<Text>().text = (currSlide % 5 + 1) + "/5";
+    }
+
+    public void next()
+    {
+        tutorial.GetComponent<Image>().sprite = slides[(++currSlide) % 5];
+        howToPlay.transform.GetChild(0).GetComponent<Text>().text = (currSlide % 5 + 1) + "/5";
     }
 
     public void quitGame()
