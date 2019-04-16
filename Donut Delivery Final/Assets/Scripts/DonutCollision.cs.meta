@@ -8,6 +8,7 @@ MonoImporter:
   - houseSelection: {instanceID: 0}
   - ui: {instanceID: 0}
   - soundEffect: {fileID: 8300000, guid: ba326482fafd3b74c8bf624ccee5bc2b, type: 3}
+  - tranlucent: {fileID: 2100000, guid: cb2a6329ac04d4a4994ba5308971dcf4, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

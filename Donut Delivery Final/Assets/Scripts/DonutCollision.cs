@@ -10,6 +10,8 @@ public class DonutCollision : MonoBehaviour
     public GameObject ui;
     public AudioClip soundEffect;
     private AudioSource source;
+    public Material tranlucent; 
+
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +50,7 @@ public class DonutCollision : MonoBehaviour
 
             houseSelection.onDelivery();
             float distance = Vector3.Distance(houseSelection.targetHouse.transform.position, player.transform.position);
-            //arrow.GetComponent<Renderer>().material.color = Color.white;
+            //arrow.GetComponent<Renderer>().material = tranlucent;
 
             //on collision: add seconds according to distance to next house and destroy the donut
             float addedTime = 0.12f * distance;

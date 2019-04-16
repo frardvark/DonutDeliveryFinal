@@ -36581,6 +36581,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7362079784847504041, guid: 3d7813302bb81a444a7901ad681259ac,
+        type: 3}
+      propertyPath: translucent
+      value: 
+      objectReference: {fileID: 2100000, guid: cb2a6329ac04d4a4994ba5308971dcf4, type: 2}
+    - target: {fileID: 7756736747207727595, guid: 3d7813302bb81a444a7901ad681259ac,
+        type: 3}
+      propertyPath: translucent
+      value: 
+      objectReference: {fileID: 2100000, guid: cb2a6329ac04d4a4994ba5308971dcf4, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d7813302bb81a444a7901ad681259ac, type: 3}
 --- !u!1001 &1200639627
@@ -65078,6 +65088,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1410968975472195977, guid: 6f91ddf18d692af449a23697113c0503,
+        type: 3}
+      propertyPath: waypoint1
+      value: 
+      objectReference: {fileID: 1023371842}
+    - target: {fileID: 1410968975472195977, guid: 6f91ddf18d692af449a23697113c0503,
+        type: 3}
+      propertyPath: waypoint2
+      value: 
+      objectReference: {fileID: 1119941038}
+    - target: {fileID: 1410968975472195977, guid: 6f91ddf18d692af449a23697113c0503,
+        type: 3}
+      propertyPath: waypoint3
+      value: 
+      objectReference: {fileID: 1246861189}
     - target: {fileID: 883460198, guid: 6f91ddf18d692af449a23697113c0503, type: 3}
       propertyPath: m_Name
       value: PedestrianCarF
@@ -65152,21 +65177,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 760289761}
     - target: {fileID: 4923951695769363936, guid: 6f91ddf18d692af449a23697113c0503,
-        type: 3}
-      propertyPath: waypoint3
-      value: 
-      objectReference: {fileID: 1246861189}
-    - target: {fileID: 1410968975472195977, guid: 6f91ddf18d692af449a23697113c0503,
-        type: 3}
-      propertyPath: waypoint1
-      value: 
-      objectReference: {fileID: 1023371842}
-    - target: {fileID: 1410968975472195977, guid: 6f91ddf18d692af449a23697113c0503,
-        type: 3}
-      propertyPath: waypoint2
-      value: 
-      objectReference: {fileID: 1119941038}
-    - target: {fileID: 1410968975472195977, guid: 6f91ddf18d692af449a23697113c0503,
         type: 3}
       propertyPath: waypoint3
       value: 

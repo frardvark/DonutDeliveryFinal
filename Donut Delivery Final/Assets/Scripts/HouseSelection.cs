@@ -14,6 +14,7 @@ public class HouseSelection : MonoBehaviour
     public GameObject rangeRing;
     public int donutType;
     public int deliveryGoal;    //Number of houses you have to deliver to beat level  
+    public Material translucent;
 
     void Start()
     {
@@ -29,7 +30,7 @@ public class HouseSelection : MonoBehaviour
         deliveryGoal--;
         Destroy(rangeRing);
         Destroy(range);
-        GameObject.FindGameObjectWithTag("Arrow").GetComponent<Renderer>().material.color = Color.white;
+        GameObject.FindGameObjectWithTag("Arrow").GetComponent<Renderer>().material = translucent;
         Debug.Log("Delivery Goal " + deliveryGoal);
         if (deliveryGoal > 0)
         {

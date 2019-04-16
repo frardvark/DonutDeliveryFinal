@@ -13,6 +13,7 @@ public class ThrowDonut : MonoBehaviour
     public GameObject sprinkle;
     public int donutType;
     public bool canFire;
+    public Material translucent; 
     
     
 
@@ -63,7 +64,7 @@ public class ThrowDonut : MonoBehaviour
         if (other.gameObject.name == throwRange.gameObject.name)
         {
             canFire = false;
-            GameObject.FindGameObjectWithTag("Arrow").GetComponent<Renderer>().material.color = Color.white;
+            GameObject.FindGameObjectWithTag("Arrow").GetComponent<Renderer>().material = translucent;
         }
     }
 
