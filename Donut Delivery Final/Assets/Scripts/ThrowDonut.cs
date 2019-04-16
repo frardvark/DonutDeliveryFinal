@@ -13,6 +13,8 @@ public class ThrowDonut : MonoBehaviour
     public GameObject sprinkle;
     public int donutType;
     public bool canFire;
+    
+    
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,7 @@ public class ThrowDonut : MonoBehaviour
         house = GetComponent<HouseSelection>().targetHouse;
         player = GameObject.FindGameObjectWithTag("Player");
         canFire = false;
+        
     }
 
     // Update is called once per frame
@@ -43,6 +46,7 @@ public class ThrowDonut : MonoBehaviour
         {
             FireDonut();
         }
+        
     }
 
     void OnTriggerEnter(Collider other)

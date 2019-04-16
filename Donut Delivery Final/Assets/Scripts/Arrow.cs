@@ -7,14 +7,15 @@ public class Arrow : MonoBehaviour
     GameObject target;
     GameObject truck;
 
+    //public Color whiteColor;
 
     // Start is called before the first frame update
     void Start()
     {
 
         truck = GameObject.Find("truck_withTexture");
-        GetComponent<Renderer>().material.color = Color.white;
-
+      //  GetComponent<Renderer>().material.SetColor("_TintColor", whiteColor);
+        
     }
 
     // Update is called once per frame

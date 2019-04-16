@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7297f595f0a1af84e8f87b924a588ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whiteColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &925078181410633949
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,6 +917,7 @@ MonoBehaviour:
   sprinkle: {fileID: 0}
   donutType: 0
   canFire: 0
+  white2Color: {r: 1, g: 1, b: 1, a: 0.3764706}
 --- !u!114 &4466139783909910868
 MonoBehaviour:
   m_ObjectHideFlags: 0
