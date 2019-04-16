@@ -1372,7 +1372,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d656babd7a09bc04c9ae7be7fedf3662, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4dc4d7f9f524e004ea4f559e862a0174, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -11093,6 +11093,7 @@ GameObject:
   - component: {fileID: 534669903}
   - component: {fileID: 534669907}
   - component: {fileID: 534669906}
+  - component: {fileID: 534669908}
   m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -11188,11 +11189,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 0}
-  isGlobal: 0
+  sharedProfile: {fileID: 11400000, guid: 051d68f6c67dd1847b65a06d877fc9bd, type: 2}
+  isGlobal: 1
   blendDistance: 0
   weight: 1
   priority: 0
+--- !u!114 &534669908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 534669905}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 1
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1001 &536143753
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11585,7 +11646,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 141.2, y: -35}
+  m_AnchoredPosition: {x: 112.7, y: -25.4}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &560958130
@@ -12661,7 +12722,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 327, y: -100}
+  m_AnchoredPosition: {x: 298.49997, y: -90.40001}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &602758424
@@ -18624,7 +18685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 960217425, guid: 7dac1d41951d79841924fbdc6e620d15, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -116.04309
+      value: -124.04
       objectReference: {fileID: 0}
     - target: {fileID: 960217425, guid: 7dac1d41951d79841924fbdc6e620d15, type: 3}
       propertyPath: m_LocalPosition.y
@@ -23545,6 +23606,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1410968975472195977, guid: 6f91ddf18d692af449a23697113c0503,
+        type: 3}
+      propertyPath: waypoint1
+      value: 
+      objectReference: {fileID: 760289761}
+    - target: {fileID: 1410968975472195977, guid: 6f91ddf18d692af449a23697113c0503,
+        type: 3}
+      propertyPath: waypoint2
+      value: 
+      objectReference: {fileID: 1246861189}
+    - target: {fileID: 1410968975472195977, guid: 6f91ddf18d692af449a23697113c0503,
+        type: 3}
+      propertyPath: waypoint3
+      value: 
+      objectReference: {fileID: 1023371842}
+    - target: {fileID: 1410968975472195980, guid: 6f91ddf18d692af449a23697113c0503,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 883460198, guid: 6f91ddf18d692af449a23697113c0503, type: 3}
       propertyPath: m_Name
       value: PedestrianCarF (3)
@@ -23619,26 +23700,6 @@ PrefabInstance:
       propertyPath: waypoint3
       value: 
       objectReference: {fileID: 1272916903}
-    - target: {fileID: 1410968975472195977, guid: 6f91ddf18d692af449a23697113c0503,
-        type: 3}
-      propertyPath: waypoint1
-      value: 
-      objectReference: {fileID: 760289761}
-    - target: {fileID: 1410968975472195977, guid: 6f91ddf18d692af449a23697113c0503,
-        type: 3}
-      propertyPath: waypoint2
-      value: 
-      objectReference: {fileID: 1246861189}
-    - target: {fileID: 1410968975472195977, guid: 6f91ddf18d692af449a23697113c0503,
-        type: 3}
-      propertyPath: waypoint3
-      value: 
-      objectReference: {fileID: 1023371842}
-    - target: {fileID: 1410968975472195980, guid: 6f91ddf18d692af449a23697113c0503,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f91ddf18d692af449a23697113c0503, type: 3}
 --- !u!1 &1121566782
@@ -23677,7 +23738,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 326, y: -68}
+  m_AnchoredPosition: {x: 297.49997, y: -58.400005}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1121566784
@@ -27891,7 +27952,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 140, y: -100}
+  m_AnchoredPosition: {x: 111.499985, y: -90.40001}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1378527991
@@ -29733,7 +29794,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 230, y: -140}
+  m_AnchoredPosition: {x: 201.49998, y: -130.40001}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1475639822
@@ -33199,6 +33260,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1410968975472195977, guid: 6f91ddf18d692af449a23697113c0503,
+        type: 3}
+      propertyPath: waypoint1
+      value: 
+      objectReference: {fileID: 760289761}
+    - target: {fileID: 1410968975472195977, guid: 6f91ddf18d692af449a23697113c0503,
+        type: 3}
+      propertyPath: waypoint2
+      value: 
+      objectReference: {fileID: 1246861189}
+    - target: {fileID: 1410968975472195977, guid: 6f91ddf18d692af449a23697113c0503,
+        type: 3}
+      propertyPath: waypoint3
+      value: 
+      objectReference: {fileID: 1023371842}
+    - target: {fileID: 1410968975472195980, guid: 6f91ddf18d692af449a23697113c0503,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 883460198, guid: 6f91ddf18d692af449a23697113c0503, type: 3}
       propertyPath: m_Name
       value: PedestrianCarF (1)
@@ -33273,26 +33354,6 @@ PrefabInstance:
       propertyPath: waypoint3
       value: 
       objectReference: {fileID: 1119941038}
-    - target: {fileID: 1410968975472195977, guid: 6f91ddf18d692af449a23697113c0503,
-        type: 3}
-      propertyPath: waypoint1
-      value: 
-      objectReference: {fileID: 760289761}
-    - target: {fileID: 1410968975472195977, guid: 6f91ddf18d692af449a23697113c0503,
-        type: 3}
-      propertyPath: waypoint2
-      value: 
-      objectReference: {fileID: 1246861189}
-    - target: {fileID: 1410968975472195977, guid: 6f91ddf18d692af449a23697113c0503,
-        type: 3}
-      propertyPath: waypoint3
-      value: 
-      objectReference: {fileID: 1023371842}
-    - target: {fileID: 1410968975472195980, guid: 6f91ddf18d692af449a23697113c0503,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 883460202, guid: 6f91ddf18d692af449a23697113c0503, type: 3}
       propertyPath: avoidancePriority
       value: 45
@@ -41402,7 +41463,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 140, y: -68}
+  m_AnchoredPosition: {x: 111.499985, y: -58.400005}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2043718934
@@ -44673,6 +44734,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1410968975472195977, guid: 6f91ddf18d692af449a23697113c0503,
+        type: 3}
+      propertyPath: waypoint1
+      value: 
+      objectReference: {fileID: 760289761}
+    - target: {fileID: 1410968975472195977, guid: 6f91ddf18d692af449a23697113c0503,
+        type: 3}
+      propertyPath: waypoint2
+      value: 
+      objectReference: {fileID: 1246861189}
+    - target: {fileID: 1410968975472195977, guid: 6f91ddf18d692af449a23697113c0503,
+        type: 3}
+      propertyPath: waypoint3
+      value: 
+      objectReference: {fileID: 1023371842}
+    - target: {fileID: 1410968975472195980, guid: 6f91ddf18d692af449a23697113c0503,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 883460198, guid: 6f91ddf18d692af449a23697113c0503, type: 3}
       propertyPath: m_Name
       value: PedestrianCarF
@@ -44747,26 +44828,6 @@ PrefabInstance:
       propertyPath: waypoint3
       value: 
       objectReference: {fileID: 1246861189}
-    - target: {fileID: 1410968975472195977, guid: 6f91ddf18d692af449a23697113c0503,
-        type: 3}
-      propertyPath: waypoint1
-      value: 
-      objectReference: {fileID: 760289761}
-    - target: {fileID: 1410968975472195977, guid: 6f91ddf18d692af449a23697113c0503,
-        type: 3}
-      propertyPath: waypoint2
-      value: 
-      objectReference: {fileID: 1246861189}
-    - target: {fileID: 1410968975472195977, guid: 6f91ddf18d692af449a23697113c0503,
-        type: 3}
-      propertyPath: waypoint3
-      value: 
-      objectReference: {fileID: 1023371842}
-    - target: {fileID: 1410968975472195980, guid: 6f91ddf18d692af449a23697113c0503,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f91ddf18d692af449a23697113c0503, type: 3}
 --- !u!114 &8897376362702088170
